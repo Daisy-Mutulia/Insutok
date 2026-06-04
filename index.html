@@ -1355,8 +1355,8 @@ function submitContact() {
     ['msg-name','msg-email','msg-body'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('msg-subject').selectedIndex = 0;
   })
-  .catch(err => {
-    alert('Failed to send message. Please try WhatsApp or email us directly.');
+ .catch(err => {
+    alert('Error: ' + JSON.stringify(err));
     console.error(err);
   });
 }
