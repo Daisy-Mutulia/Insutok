@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -413,7 +414,7 @@
     <button class="tab-btn active" data-tab="overview" onclick="switchTab('overview')">Overview</button>
     <button class="tab-btn" data-tab="pricing" onclick="switchTab('pricing')">Pricing &amp; Math</button>
     <button class="tab-btn" data-tab="analytics" onclick="switchTab('analytics')">Analytics &amp; Risk</button>
-    <button class="tab-btn" data-tab="claims" onclick="switchTab('claims')">Claims &amp; Support</button>
+    <button class="tab-btn" data-tab="claims" onclick="switchTab('claims')">Login / Register</button>
     <button class="tab-btn" data-tab="contact" onclick="switchTab('contact')">Contact &amp; FAQ</button>
   </div>
 </div>
@@ -432,7 +433,6 @@
         <h1>Protect Your<br/><em>Digital Income</em></h1>
         <p>The first actuarially-priced income interruption insurance built for content creators on TikTok, YouTube, and Instagram. When your income stops, we don't.</p>
         <div class="hero-btns">
-          <button class="btn btn-primary" onclick="switchTab('pricing')">Calculate My Premium →</button>
           <a href="https://wa.me/254712528731" class="btn-wa">💬 Chat on WhatsApp</a>
         </div>
         <div class="hero-badges-row">
@@ -511,17 +511,6 @@
     </div>
   </div>
 
-  <!-- CTA -->
-  <div class="tab-section" style="background:var(--green);text-align:center">
-    <div class="container">
-      <h2 class="section-title" style="color:#fff;max-width:600px;margin:0 auto 16px">Ready to Protect<br/>Your Income?</h2>
-      <p style="color:rgba(255,255,255,0.75);font-size:17px;margin-bottom:32px">Join the waitlist today and be first in line when INSUTOK launches.</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <button class="btn" style="background:#fff;color:var(--green);font-size:15px;padding:14px 28px" onclick="openWaitlist()">Join the Waitlist →</button>
-        <button class="btn" style="background:transparent;border:2px solid rgba(255,255,255,0.5);color:#fff;font-size:15px;padding:14px 28px" onclick="switchTab('pricing')">See Pricing</button>
-      </div>
-    </div>
-  </div>
 </div>
 
 
@@ -533,111 +522,9 @@
     <div class="container">
       <div class="section-label">Premium Calculator</div>
       <h2 class="section-title">Know Your Premium<br/>in 60 Seconds</h2>
-      <p class="section-sub">Powered by actuarially fair pricing. Risk scoring uses 3 factors: <strong>History of Bans · Content Niche · Platform Concentration</strong></p>
-
-      <div class="calc-layout">
-        <!-- LEFT: INPUTS -->
-        <div class="calc-panel">
-          <div class="factor-card">
-            <div class="factor-card-title">Platform Concentration</div>
-            <div class="factor-card-weight">Weight: 10% of risk score</div>
-            <select class="form-select" id="c-platform" onchange="calcPremium()">
-              <option value="5">100% dependent on one platform — Score: 5 (Highest Risk)</option>
-              <option value="3" selected>2 platforms for income — Score: 3 (Medium)</option>
-              <option value="1">3 or more platforms — Score: 1 (Lowest Risk)</option>
-            </select>
-          </div>
-          <div class="factor-card">
-            <div class="factor-card-title">Content Niche Risk</div>
-            <div class="factor-card-weight">Weight: 40% of risk score</div>
-            <select class="form-select" id="c-niche" onchange="calcPremium()">
-              <option value="5">High-risk niche (highly susceptible to bans) — Score: 5</option>
-              <option value="3" selected>Medium-risk niche (moderately susceptible) — Score: 3</option>
-              <option value="1">Low-risk niche (unlikely to violate guidelines) — Score: 1</option>
-            </select>
-          </div>
-          <div class="factor-card">
-            <div class="factor-card-title">History of Bans (within 24 months)</div>
-            <div class="factor-card-weight">Weight: 50% of risk score — most influential factor</div>
-            <select class="form-select" id="c-bans" onchange="calcPremium()">
-              <option value="5">3 or more bans — Score: 5 (Highest Risk)</option>
-              <option value="3">1–2 bans — Score: 3 (Medium)</option>
-              <option value="1" selected>Zero bans — Score: 1 (Lowest Risk)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Monthly Income (KSh)</label>
-            <div class="range-row">
-              <input type="range" min="1000" max="2000000" step="1000" value="50000" id="c-income-range" oninput="syncInput('income','range')" />
-              <input type="number" min="1000" step="1000" value="50000" id="c-income" class="num-input" oninput="syncInput('income','num')" placeholder="e.g. 50000" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Interruptions per Year</label>
-            <div class="range-row">
-              <input type="range" min="1" max="30" step="1" value="2" id="c-lambda-range" oninput="syncInput('lambda','range')" />
-              <input type="number" min="1" step="1" value="2" id="c-lambda" class="num-input" oninput="syncInput('lambda','num')" placeholder="e.g. 2" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Avg. Interruption Duration (Days)</label>
-            <div class="range-row">
-              <input type="range" min="1" max="365" step="1" value="15" id="c-duration-range" oninput="syncInput('duration','range')" />
-              <input type="number" min="1" step="1" value="15" id="c-duration" class="num-input" oninput="syncInput('duration','num')" placeholder="e.g. 15" />
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Income Replacement Ratio</label>
-            <select class="form-select" id="c-coverage" onchange="calcPremium()">
-              <option value="0.5">50% — Bronze / Starter</option>
-              <option value="0.55">55% — Silver / Growth</option>
-              <option value="0.6" selected>60% — Gold / Professional</option>
-            </select>
-          </div>
-          <div class="form-group" style="margin-bottom:0">
-            <label class="form-label">Waiting Period</label>
-            <select class="form-select" id="c-waiting" onchange="calcPremium()">
-              <option value="3">3 Days (premium coverage)</option>
-              <option value="7" selected>7 Days (standard)</option>
-              <option value="14">14 Days (lower premium)</option>
-              <option value="30">30 Days (budget coverage)</option>
-            </select>
-          </div>
-        </div>
-
-        <!-- RIGHT: RESULT -->
-        <div class="calc-result">
-          <div class="risk-weights">
-            <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px">Risk Factor Weights</div>
-            <div class="risk-weight-row"><span class="rwl">History of Bans</span><div class="rwbar"><div class="rwbar-fill" style="width:50%"></div></div><span class="rwpct">50%</span></div>
-            <div class="risk-weight-row"><span class="rwl">Content Niche</span><div class="rwbar"><div class="rwbar-fill" style="width:40%"></div></div><span class="rwpct">40%</span></div>
-            <div class="risk-weight-row"><span class="rwl">Platform Concentration</span><div class="rwbar"><div class="rwbar-fill" style="width:10%"></div></div><span class="rwpct">10%</span></div>
-          </div>
-          <div class="res-label">Weighted Risk Score</div>
-          <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px">
-            <span id="r-score" style="font-family:'Syne',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-1px">1.90</span>
-            <span id="r-risk-badge" class="risk-badge" style="background:rgba(230,126,34,.15);color:#e67e22">Medium Risk</span>
-          </div>
-          <div class="score-bar-wrap"><div class="score-bar" id="r-score-bar" style="width:45%;background:#e67e22"></div></div>
-          <div class="score-range-labels"><span>1.00 High</span><span>1.61 Medium</span><span>2.31 Low</span><span>3.00</span></div>
-          <div class="res-divider"></div>
-          <div class="res-label">Estimated Annual Premium</div>
-          <div class="res-amount" id="r-premium">KSh 36,000</div>
-          <div class="res-period">per year &nbsp;≈ <span id="r-monthly">KSh 3,000</span>/month</div>
-          <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px">Premium Breakdown</div>
-          <div class="res-row"><span>Daily Benefit</span><span id="r-daily-benefit">—</span></div>
-          <div class="res-row"><span>Income Replacement</span><span id="r-ratio">60%</span></div>
-          <div class="res-row"><span>Coverage Duration</span><span id="r-dur">15 days</span></div>
-          <div class="res-row"><span>Expected Loss per Year</span><span id="r-el">—</span></div>
-          <div class="res-row"><span>Risk Loading</span><span id="r-loading">—</span></div>
-          <div class="res-row" style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.08)">
-            <span style="color:rgba(255,255,255,.6);font-weight:600">Annual Premium</span>
-            <span id="r-premium2" style="color:#5ec9ae;font-weight:700">KSh 36,000</span>
-          </div>
-          <div class="risk-note" id="r-note">Diversifying your platforms and maintaining a clean ban history are the two most effective ways to reduce your INSUTOK premium at renewal.</div>
-          <button class="btn btn-primary" style="width:100%;margin-top:18px;justify-content:center" onclick="switchTab('claims')">Start Registration →</button>
-          <button onclick="downloadReport()" style="width:100%;margin-top:10px;padding:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-sm);color:rgba(255,255,255,0.5);font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;transition:all .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">📥 Download Risk Report</button>
-        </div>
+      <p class="section-sub">Log in or register to use the premium calculator — your personalised quote is based on your verified creator profile.</p>
+      <div style="text-align:center;margin-top:32px">
+        <button class="btn btn-primary" style="font-size:15px;padding:14px 28px" onclick="switchTab('claims')">Login / Register to Calculate →</button>
       </div>
     </div>
   </div>
@@ -765,199 +652,405 @@
 
 
 <!-- =============================================
-     TAB 4: CLAIMS & SUPPORT
+     TAB 4: LOGIN / REGISTER
 ============================================= -->
 <div class="tab-panel" id="tab-claims">
 
-  <!-- KYC SECTION -->
-  <div class="tab-section">
-    <div class="container">
-      <div class="section-label">Creator Registration</div>
-      <h2 class="section-title">Know Your Creator (KYC)</h2>
-      <p class="section-sub" style="margin-bottom:36px">Complete your creator profile to receive a personalised policy. All information is verified and stored securely.</p>
+  <!-- AUTH GATE (shown when logged out) -->
+  <div id="auth-gate">
+    <div class="tab-section">
+      <div class="container" style="max-width:960px">
+        <div class="section-label">Member Portal</div>
+        <h2 class="section-title">Login or Register</h2>
+        <p class="section-sub" style="margin-bottom:36px">Access your INSUTOK dashboard — view your premium, file a claim, or track claim status.</p>
 
-      <div class="kyc-block">
-        <h3>Identity &amp; KYC</h3>
-        <div class="grid2">
-          <div class="form-group"><label class="form-label">Full Legal Name</label><input type="text" class="form-input" placeholder="As per national ID" /></div>
-          <div class="form-group"><label class="form-label">National ID Number</label><input type="text" class="form-input" placeholder="e.g. 12345678" /></div>
-          <div class="form-group"><label class="form-label">Tax PIN (KRA)</label><input type="text" class="form-input" placeholder="e.g. A000000000X" /></div>
-          <div class="form-group"><label class="form-label">Business Registration No. <span style="font-weight:400;color:var(--ink3);text-transform:none;font-size:11px">(Optional)</span></label><input type="text" class="form-input" placeholder="If registered with BRS" /></div>
-          <div class="form-group" style="grid-column:1/-1">
-            <label class="form-label">Location (County)</label>
+        <div class="grid2" style="max-width:800px">
+          <!-- LOGIN -->
+          <div class="card" style="padding:36px">
+            <h3 style="font-size:20px;font-weight:800;margin-bottom:6px">Welcome Back</h3>
+            <p style="font-size:14px;color:var(--ink2);margin-bottom:24px">Log in to your INSUTOK account.</p>
+            <div id="loginError" style="display:none;background:#fce4ec;border:1px solid #e57373;border-radius:var(--radius-sm);padding:10px 14px;font-size:13px;color:#c0392b;margin-bottom:14px"></div>
+            <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="login-email" placeholder="your@email.com" /></div>
+            <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="login-pass" placeholder="••••••••" /></div>
+            <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px" onclick="doLogin()">Login →</button>
+            <p style="font-size:12px;color:var(--ink3);margin-top:14px;text-align:center">Admin? Use your admin credentials to access the admin portal.</p>
+          </div>
+
+          <!-- REGISTER -->
+          <div class="card" style="padding:36px;border-color:var(--green)">
+            <h3 style="font-size:20px;font-weight:800;margin-bottom:6px">New Creator?</h3>
+            <p style="font-size:14px;color:var(--ink2);margin-bottom:24px">Create your INSUTOK account to get started.</p>
+            <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" id="reg-name" placeholder="As per National ID" /></div>
+            <div class="form-group"><label class="form-label">Email Address</label><input type="email" class="form-input" id="reg-email" placeholder="your@email.com" /></div>
+            <div class="form-group"><label class="form-label">Password</label><input type="password" class="form-input" id="reg-pass" placeholder="Min 8 characters" /></div>
+            <div class="form-group" style="margin-bottom:0"><label class="form-label">Confirm Password</label><input type="password" class="form-input" id="reg-pass2" placeholder="Repeat password" /></div>
+            <button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:18px;background:var(--green)" onclick="doRegister()">Create Account →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- USER DASHBOARD (shown when logged in as normal user) -->
+  <div id="user-dashboard" style="display:none">
+    <div class="tab-section" style="padding-bottom:0">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;flex-wrap:wrap;gap:12px">
+          <div>
+            <div class="section-label">Member Dashboard</div>
+            <h2 class="section-title" style="margin-bottom:0">Welcome back, <span id="dash-username">Creator</span> 👋</h2>
+          </div>
+          <button class="btn btn-ghost" onclick="doLogout()">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PREMIUM CALCULATOR (moved here from Pricing tab) -->
+    <div class="tab-section-alt">
+      <div class="container">
+        <div class="section-label">Premium Calculator</div>
+        <h2 class="section-title">Know Your Premium<br/>in 60 Seconds</h2>
+        <p class="section-sub">Powered by actuarially fair pricing. Risk scoring uses 3 factors: <strong>History of Bans · Content Niche · Platform Concentration</strong></p>
+
+        <div class="calc-layout">
+          <!-- LEFT: INPUTS -->
+          <div class="calc-panel">
+            <div class="factor-card">
+              <div class="factor-card-title">Platform Concentration</div>
+              <div class="factor-card-weight">Weight: 10% of risk score</div>
+              <select class="form-select" id="c-platform" onchange="calcPremium()">
+                <option value="5">100% dependent on one platform — Score: 5 (Highest Risk)</option>
+                <option value="3" selected>2 platforms for income — Score: 3 (Medium)</option>
+                <option value="1">3 or more platforms — Score: 1 (Lowest Risk)</option>
+              </select>
+            </div>
+            <div class="factor-card">
+              <div class="factor-card-title">Content Niche Risk</div>
+              <div class="factor-card-weight">Weight: 40% of risk score</div>
+              <select class="form-select" id="c-niche" onchange="calcPremium()">
+                <option value="5">High-risk niche (highly susceptible to bans) — Score: 5</option>
+                <option value="3" selected>Medium-risk niche (moderately susceptible) — Score: 3</option>
+                <option value="1">Low-risk niche (unlikely to violate guidelines) — Score: 1</option>
+              </select>
+            </div>
+            <div class="factor-card">
+              <div class="factor-card-title">History of Bans (within 24 months)</div>
+              <div class="factor-card-weight">Weight: 50% of risk score — most influential factor</div>
+              <select class="form-select" id="c-bans" onchange="calcPremium()">
+                <option value="5">3 or more bans — Score: 5 (Highest Risk)</option>
+                <option value="3">1–2 bans — Score: 3 (Medium)</option>
+                <option value="1" selected>Zero bans — Score: 1 (Lowest Risk)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Monthly Income (KSh)</label>
+              <div class="range-row">
+                <input type="range" min="1000" max="2000000" step="1000" value="50000" id="c-income-range" oninput="syncInput('income','range')" />
+                <input type="number" min="1000" step="1000" value="50000" id="c-income" class="num-input" oninput="syncInput('income','num')" placeholder="e.g. 50000" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Interruptions per Year</label>
+              <div class="range-row">
+                <input type="range" min="1" max="30" step="1" value="2" id="c-lambda-range" oninput="syncInput('lambda','range')" />
+                <input type="number" min="1" step="1" value="2" id="c-lambda" class="num-input" oninput="syncInput('lambda','num')" placeholder="e.g. 2" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Avg. Interruption Duration (Days)</label>
+              <div class="range-row">
+                <input type="range" min="1" max="365" step="1" value="15" id="c-duration-range" oninput="syncInput('duration','range')" />
+                <input type="number" min="1" step="1" value="15" id="c-duration" class="num-input" oninput="syncInput('duration','num')" placeholder="e.g. 15" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Income Replacement Ratio</label>
+              <select class="form-select" id="c-coverage" onchange="calcPremium()">
+                <option value="0.5">50% — Bronze / Starter</option>
+                <option value="0.55">55% — Silver / Growth</option>
+                <option value="0.6" selected>60% — Gold / Professional</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:0">
+              <label class="form-label">Waiting Period</label>
+              <select class="form-select" id="c-waiting" onchange="calcPremium()">
+                <option value="3">3 Days (premium coverage)</option>
+                <option value="7" selected>7 Days (standard)</option>
+                <option value="14">14 Days (lower premium)</option>
+                <option value="30">30 Days (budget coverage)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- RIGHT: RESULT -->
+          <div class="calc-result">
+            <div class="risk-weights">
+              <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px">Risk Factor Weights</div>
+              <div class="risk-weight-row"><span class="rwl">History of Bans</span><div class="rwbar"><div class="rwbar-fill" style="width:50%"></div></div><span class="rwpct">50%</span></div>
+              <div class="risk-weight-row"><span class="rwl">Content Niche</span><div class="rwbar"><div class="rwbar-fill" style="width:40%"></div></div><span class="rwpct">40%</span></div>
+              <div class="risk-weight-row"><span class="rwl">Platform Concentration</span><div class="rwbar"><div class="rwbar-fill" style="width:10%"></div></div><span class="rwpct">10%</span></div>
+            </div>
+            <div class="res-label">Weighted Risk Score</div>
+            <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px">
+              <span id="r-score" style="font-family:'Syne',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-1px">1.90</span>
+              <span id="r-risk-badge" class="risk-badge" style="background:rgba(230,126,34,.15);color:#e67e22">Medium Risk</span>
+            </div>
+            <div class="score-bar-wrap"><div class="score-bar" id="r-score-bar" style="width:45%;background:#e67e22"></div></div>
+            <div class="score-range-labels"><span>1.00 High</span><span>1.61 Medium</span><span>2.31 Low</span><span>3.00</span></div>
+            <div class="res-divider"></div>
+            <div class="res-label">Estimated Annual Premium</div>
+            <div class="res-amount" id="r-premium">KSh 36,000</div>
+            <div class="res-period">per year &nbsp;≈ <span id="r-monthly">KSh 3,000</span>/month</div>
+            <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px">Premium Breakdown</div>
+            <div class="res-row"><span>Daily Benefit</span><span id="r-daily-benefit">—</span></div>
+            <div class="res-row"><span>Income Replacement</span><span id="r-ratio">60%</span></div>
+            <div class="res-row"><span>Coverage Duration</span><span id="r-dur">15 days</span></div>
+            <div class="res-row"><span>Expected Loss per Year</span><span id="r-el">—</span></div>
+            <div class="res-row"><span>Risk Loading</span><span id="r-loading">—</span></div>
+            <div class="res-row" style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.08)">
+              <span style="color:rgba(255,255,255,.6);font-weight:600">Annual Premium</span>
+              <span id="r-premium2" style="color:#5ec9ae;font-weight:700">KSh 36,000</span>
+            </div>
+            <div class="risk-note" id="r-note">Diversifying your platforms and maintaining a clean ban history are the two most effective ways to reduce your INSUTOK premium at renewal.</div>
+            <button onclick="downloadReport()" style="width:100%;margin-top:18px;padding:10px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-sm);color:rgba(255,255,255,0.5);font-family:'DM Sans',sans-serif;font-size:13px;cursor:pointer;transition:all .2s" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">📥 Download Risk Report</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MY CLAIMS STATUS -->
+    <div class="tab-section">
+      <div class="container">
+        <div class="section-label">My Claims</div>
+        <h2 class="section-title" style="font-size:28px">Claim Status Tracker</h2>
+        <p style="font-size:15px;color:var(--ink2);margin-bottom:32px">View the latest status of claims filed under your account.</p>
+        <div id="user-claims-list" style="max-width:760px">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- KYC SECTION -->
+    <div class="tab-section-alt">
+      <div class="container">
+        <div class="section-label">Creator Registration</div>
+        <h2 class="section-title">Know Your Creator (KYC)</h2>
+        <p class="section-sub" style="margin-bottom:36px">Complete your creator profile to receive a personalised policy. All information is verified and stored securely.</p>
+
+        <div class="kyc-block">
+          <h3>Identity &amp; KYC</h3>
+          <div class="grid2">
+            <div class="form-group"><label class="form-label">Full Legal Name</label><input type="text" class="form-input" placeholder="As per national ID" /></div>
+            <div class="form-group"><label class="form-label">National ID Number</label><input type="text" class="form-input" placeholder="e.g. 12345678" /></div>
+            <div class="form-group"><label class="form-label">Tax PIN (KRA)</label><input type="text" class="form-input" placeholder="e.g. A000000000X" /></div>
+            <div class="form-group"><label class="form-label">Business Registration No. <span style="font-weight:400;color:var(--ink3);text-transform:none;font-size:11px">(Optional)</span></label><input type="text" class="form-input" placeholder="If registered with BRS" /></div>
+            <div class="form-group" style="grid-column:1/-1">
+              <label class="form-label">Location (County)</label>
+              <select class="form-select">
+                <option value="">Select county</option>
+                <option>Nairobi</option><option>Mombasa</option><option>Kisumu</option>
+                <option selected>Nakuru</option><option>Eldoret</option><option>Nyeri</option>
+                <option>Thika</option><option>Malindi</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="kyc-block">
+          <h3>Digital Asset Declaration</h3>
+          <p style="font-size:14px;color:var(--ink2);margin-bottom:20px">Declare the social media platforms that constitute your insured digital assets.</p>
+          <div id="platform-rows">
+            <div class="platform-row">
+              <select class="form-select" style="flex:1"><option>TikTok</option><option>YouTube</option><option>Instagram</option><option>Facebook</option><option>X (Twitter)</option></select>
+              <input type="text" class="form-input" placeholder="Exact handle e.g. @your_username" style="flex:2" />
+              <button class="rm-btn" onclick="removePlatformRow(this)">Remove</button>
+            </div>
+          </div>
+          <button class="add-platform-btn" onclick="addPlatformRow()">+ Add another platform</button>
+          <div class="form-group" style="margin-top:20px">
+            <label class="form-label">Content Niche</label>
             <select class="form-select">
-              <option value="">Select county</option>
-              <option>Nairobi</option><option>Mombasa</option><option>Kisumu</option>
-              <option selected>Nakuru</option><option>Eldoret</option><option>Nyeri</option>
-              <option>Thika</option><option>Malindi</option><option>Other</option>
+              <option value="">Select your primary content niche</option>
+              <option>Comedy &amp; Entertainment</option><option>Music &amp; Dance</option>
+              <option>News &amp; Politics</option><option>Lifestyle &amp; Vlogging</option>
+              <option>Health &amp; Fitness</option><option>Education &amp; Tutorials</option>
+              <option>Gaming</option><option>Fashion &amp; Beauty</option>
+              <option>Food &amp; Cooking</option><option>Sports</option><option>Other</option>
             </select>
           </div>
         </div>
-      </div>
 
-      <div class="kyc-block">
-        <h3>Digital Asset Declaration</h3>
-        <p style="font-size:14px;color:var(--ink2);margin-bottom:20px">Declare the social media platforms that constitute your insured digital assets.</p>
-        <div id="platform-rows">
-          <div class="platform-row">
-            <select class="form-select" style="flex:1"><option>TikTok</option><option>YouTube</option><option>Instagram</option><option>Facebook</option><option>X (Twitter)</option></select>
-            <input type="text" class="form-input" placeholder="Exact handle e.g. @your_username" style="flex:2" />
-            <button class="rm-btn" onclick="removePlatformRow(this)">Remove</button>
+        <div class="kyc-block">
+          <h3>Brand Partnerships &amp; Income History</h3>
+          <div class="grid2">
+            <div class="form-group" style="grid-column:1/-1">
+              <label class="form-label">Brands Currently Working With</label>
+              <textarea class="form-input" style="min-height:80px;resize:vertical" placeholder="List brand names e.g. Safaricom, Jumia, Brookside..."></textarea>
+            </div>
+            <div class="form-group"><label class="form-label">Estimated Campaign Value (KSh/month)</label><input type="number" class="form-input" placeholder="e.g. 50,000" /></div>
+            <div class="form-group"><label class="form-label">Campaign Timeline</label><select class="form-select"><option>Ongoing</option><option>3 months</option><option>6 months</option><option>12 months</option></select></div>
+            <div class="form-group"><label class="form-label">Number of Bans (within 24 months)</label><input type="number" class="form-input" placeholder="e.g. 0" min="0" /></div>
+            <div class="form-group"><label class="form-label">Average Monthly Income (KSh)</label><input type="number" class="form-input" placeholder="e.g. 30,000" /></div>
           </div>
         </div>
-        <button class="add-platform-btn" onclick="addPlatformRow()">+ Add another platform</button>
-        <div class="form-group" style="margin-top:20px">
-          <label class="form-label">Content Niche</label>
-          <select class="form-select">
-            <option value="">Select your primary content niche</option>
-            <option>Comedy &amp; Entertainment</option><option>Music &amp; Dance</option>
-            <option>News &amp; Politics</option><option>Lifestyle &amp; Vlogging</option>
-            <option>Health &amp; Fitness</option><option>Education &amp; Tutorials</option>
-            <option>Gaming</option><option>Fashion &amp; Beauty</option>
-            <option>Food &amp; Cooking</option><option>Sports</option><option>Other</option>
-          </select>
+
+        <div class="kyc-block">
+          <h3>Platform API Authentication <span class="opt">Recommended</span></h3>
+          <p style="font-size:14px;color:var(--ink2);margin-bottom:20px">Connect your accounts so INSUTOK can automatically verify income data and detect interruptions.</p>
+          <button class="connect-btn" id="btn-tiktok" onclick="toggleConnect('btn-tiktok','TikTok')"><span>🎵</span><span>Connect TikTok Account via OAuth</span><span class="status">✓ Connected</span></button>
+          <button class="connect-btn" id="btn-youtube" onclick="toggleConnect('btn-youtube','YouTube')"><span>▶️</span><span>Connect YouTube Account via OAuth</span><span class="status">✓ Connected</span></button>
+          <button class="connect-btn" id="btn-instagram" onclick="toggleConnect('btn-instagram','Instagram')"><span>📷</span><span>Connect Instagram Account via OAuth</span><span class="status">✓ Connected</span></button>
         </div>
-      </div>
 
-      <div class="kyc-block">
-        <h3>Brand Partnerships &amp; Income History</h3>
-        <div class="grid2">
-          <div class="form-group" style="grid-column:1/-1">
-            <label class="form-label">Brands Currently Working With</label>
-            <textarea class="form-input" style="min-height:80px;resize:vertical" placeholder="List brand names e.g. Safaricom, Jumia, Brookside..."></textarea>
-          </div>
-          <div class="form-group"><label class="form-label">Estimated Campaign Value (KSh/month)</label><input type="number" class="form-input" placeholder="e.g. 50,000" /></div>
-          <div class="form-group"><label class="form-label">Campaign Timeline</label><select class="form-select"><option>Ongoing</option><option>3 months</option><option>6 months</option><option>12 months</option></select></div>
-          <div class="form-group"><label class="form-label">Number of Bans (within 24 months)</label><input type="number" class="form-input" placeholder="e.g. 0" min="0" /></div>
-          <div class="form-group"><label class="form-label">Average Monthly Income (KSh)</label><input type="number" class="form-input" placeholder="e.g. 30,000" /></div>
+        <div class="kyc-block">
+          <h3>Legal Disclosures &amp; Consent</h3>
+          <label class="checkbox-label"><input type="checkbox" id="ld1" /><span>I authorise INSUTOK and its insurance partners to scan and verify my <strong>publicly available</strong> social media data for risk assessment and claims verification.</span></label>
+          <label class="checkbox-label"><input type="checkbox" id="ld2" /><span>I confirm that all information provided is accurate. False or misleading information may result in policy cancellation or claim rejection.</span></label>
+          <label class="checkbox-label"><input type="checkbox" id="ld3" /><span>I have read and agree to the INSUTOK Terms &amp; Conditions, Privacy Policy, and the full Insurance Policy Document.</span></label>
+          <div style="margin-top:20px"><button class="kyc-submit-btn" onclick="submitKYC()">Submit Registration →</button></div>
+          <div class="success-box" id="kyc-success">✅ Registration submitted! We'll review your information and contact you within 48 hours via WhatsApp and email.</div>
         </div>
-      </div>
-
-      <div class="kyc-block">
-        <h3>Platform API Authentication <span class="opt">Recommended</span></h3>
-        <p style="font-size:14px;color:var(--ink2);margin-bottom:20px">Connect your accounts so INSUTOK can automatically verify income data and detect interruptions.</p>
-        <button class="connect-btn" id="btn-tiktok" onclick="toggleConnect('btn-tiktok','TikTok')"><span>🎵</span><span>Connect TikTok Account via OAuth</span><span class="status">✓ Connected</span></button>
-        <button class="connect-btn" id="btn-youtube" onclick="toggleConnect('btn-youtube','YouTube')"><span>▶️</span><span>Connect YouTube Account via OAuth</span><span class="status">✓ Connected</span></button>
-        <button class="connect-btn" id="btn-instagram" onclick="toggleConnect('btn-instagram','Instagram')"><span>📷</span><span>Connect Instagram Account via OAuth</span><span class="status">✓ Connected</span></button>
-      </div>
-
-      <div class="kyc-block">
-        <h3>Legal Disclosures &amp; Consent</h3>
-        <label class="checkbox-label"><input type="checkbox" id="ld1" /><span>I authorise INSUTOK and its insurance partners to scan and verify my <strong>publicly available</strong> social media data for risk assessment and claims verification.</span></label>
-        <label class="checkbox-label"><input type="checkbox" id="ld2" /><span>I confirm that all information provided is accurate. False or misleading information may result in policy cancellation or claim rejection.</span></label>
-        <label class="checkbox-label"><input type="checkbox" id="ld3" /><span>I have read and agree to the INSUTOK Terms &amp; Conditions, Privacy Policy, and the full Insurance Policy Document.</span></label>
-        <div style="margin-top:20px"><button class="kyc-submit-btn" onclick="submitKYC()">Submit Registration →</button></div>
-        <div class="success-box" id="kyc-success">✅ Registration submitted! We'll review your information and contact you within 48 hours via WhatsApp and email.</div>
       </div>
     </div>
-  </div>
 
-  <!-- CLAIMS FORM -->
-  <div class="tab-section-alt">
-    <div class="container">
-      <div class="section-label">Claims</div>
-      <h2 class="section-title">Report an Income<br/>Interruption</h2>
-      <p class="section-sub">Our team reviews claims within 48 hours and will contact you by email and WhatsApp.</p>
+    <!-- CLAIMS FORM -->
+    <div class="tab-section">
+      <div class="container">
+        <div class="section-label">Claims</div>
+        <h2 class="section-title">Report an Income<br/>Interruption</h2>
+        <p class="section-sub">Our team reviews claims within 48 hours and will contact you by email and WhatsApp. A copy is sent directly to insutokapp@gmail.com.</p>
 
-      <div class="claims-layout">
-        <div>
-          <div class="coverage-summary-box">
-            <h4>📋 Your Coverage Summary</h4>
-            <div class="cov-row"><span>Plan</span><span>Gold — Professional</span></div>
-            <div class="cov-row"><span>Average Monthly Income</span><span id="cov-income">KSh 50,000</span></div>
-            <div class="cov-row"><span>Income Replacement Ratio</span><span id="cov-ratio">60%</span></div>
-            <div class="cov-row"><span>Daily Benefit</span><span id="cov-daily">KSh 1,000</span></div>
-            <div class="cov-row"><span>Max Annual Payout</span><span id="cov-max">KSh 213,800</span></div>
-            <div class="cov-row"><span>Waiting Period</span><span id="cov-wait">7 days</span></div>
-            <div class="cov-row"><span>Policy Status</span><span>🟢 Active</span></div>
+        <div class="claims-layout">
+          <div>
+            <div class="coverage-summary-box">
+              <h4>📋 Your Coverage Summary</h4>
+              <div class="cov-row"><span>Plan</span><span>Gold — Professional</span></div>
+              <div class="cov-row"><span>Average Monthly Income</span><span id="cov-income">KSh 50,000</span></div>
+              <div class="cov-row"><span>Income Replacement Ratio</span><span id="cov-ratio">60%</span></div>
+              <div class="cov-row"><span>Daily Benefit</span><span id="cov-daily">KSh 1,000</span></div>
+              <div class="cov-row"><span>Max Annual Payout</span><span id="cov-max">KSh 213,800</span></div>
+              <div class="cov-row"><span>Waiting Period</span><span id="cov-wait">7 days</span></div>
+              <div class="cov-row"><span>Policy Status</span><span>🟢 Active</span></div>
+            </div>
+
+            <div class="claim-form-card">
+              <h3>File a Claim</h3>
+              <div id="claimSuccess" style="display:none;background:var(--green-light);border:1px solid rgba(22,163,127,.2);border-radius:var(--radius-sm);padding:20px;margin-bottom:20px;text-align:center">
+                <div style="font-size:28px;margin-bottom:8px">✅</div>
+                <strong>Claim Submitted!</strong><br/>
+                Reference: <strong id="claimRef">—</strong><br/>
+                <span style="font-size:13px;color:var(--ink2)">We'll review within 48 hours and contact you by email and WhatsApp. A notification has been sent to insutokapp@gmail.com.</span><br/>
+                <button class="btn btn-outline" style="margin-top:14px" onclick="resetClaim()">Submit Another</button>
+              </div>
+              <div id="claimFormInner">
+                <div class="form-group"><label class="form-label">Full Name *</label><input type="text" class="form-input" id="cf-name" placeholder="Your legal name" /></div>
+                <div class="grid2">
+                  <div class="form-group"><label class="form-label">Email Address *</label><input type="email" class="form-input" id="cf-email" placeholder="your@email.com" /></div>
+                  <div class="form-group"><label class="form-label">Phone / M-PESA *</label><input type="text" class="form-input" id="cf-phone" placeholder="+254 7XX XXX XXX" /></div>
+                </div>
+                <div class="form-group"><label class="form-label">Policy Number</label><input type="text" class="form-input" placeholder="e.g. INS-2025-0042 (leave blank if unknown)" /></div>
+                <div class="grid2">
+                  <div class="form-group"><label class="form-label">Primary Platform *</label>
+                    <select class="form-select" id="cf-platform">
+                      <option value="">Select platform</option>
+                      <option>TikTok</option><option>YouTube</option><option>Instagram</option>
+                      <option>Twitter/X</option><option>Multiple Platforms</option>
+                    </select>
+                  </div>
+                  <div class="form-group"><label class="form-label">Type of Interruption *</label>
+                    <select class="form-select" id="cf-type">
+                      <option value="">Select reason</option>
+                      <option>Illness / Medical</option><option>Account Deactivation / Ban</option>
+                      <option>Demonetisation</option><option>Brand Deal Cancellation</option>
+                      <option>Algorithm-Driven Income Drop</option><option>Platform Technical Outage</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="grid2">
+                  <div class="form-group"><label class="form-label">Interruption Start Date *</label><input type="date" class="form-input" id="cf-start" /></div>
+                  <div class="form-group"><label class="form-label">Expected / Actual End Date</label><input type="date" class="form-input" /></div>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Evidence &amp; Supporting Documents *</label>
+                  <div class="upload-zone" onclick="document.getElementById('evidence-upload').click()">
+                    <div class="icon">📎</div>
+                    <p><strong>Click to upload files</strong></p>
+                    <p>Platform screenshots, medical certificates, brand deal correspondence, income statements</p>
+                    <p style="font-size:11px;margin-top:6px">PDF, JPG, PNG — max 10MB per file</p>
+                  </div>
+                  <input type="file" id="evidence-upload" multiple accept=".pdf,.jpg,.jpeg,.png" style="display:none" onchange="showFiles(this)" />
+                  <div class="file-list" id="file-list"></div>
+                  <div class="upload-note">🔒 Documents are private and only accessible to INSUTOK's claims team.</div>
+                </div>
+                <div class="form-group"><label class="form-label">Description of Interruption *</label><textarea class="form-input" id="cf-desc" style="min-height:100px;resize:vertical" placeholder="Describe what happened — include dates, platforms affected, and any correspondence with the platform or brand..."></textarea></div>
+                <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="submitClaim()">Submit Claim →</button>
+              </div>
+            </div>
           </div>
 
-          <div class="claim-form-card">
-            <h3>File a Claim</h3>
-            <div id="claimSuccess" style="display:none;background:var(--green-light);border:1px solid rgba(22,163,127,.2);border-radius:var(--radius-sm);padding:20px;margin-bottom:20px;text-align:center">
-              <div style="font-size:28px;margin-bottom:8px">✅</div>
-              <strong>Claim Submitted!</strong><br/>
-              Reference: <strong id="claimRef">—</strong><br/>
-              <span style="font-size:13px;color:var(--ink2)">We'll review within 48 hours and contact you by email and WhatsApp.</span><br/>
-              <button class="btn btn-outline" style="margin-top:14px" onclick="resetClaim()">Submit Another</button>
-            </div>
-            <div id="claimFormInner">
-              <div class="form-group"><label class="form-label">Full Name *</label><input type="text" class="form-input" id="cf-name" placeholder="Your legal name" /></div>
-              <div class="grid2">
-                <div class="form-group"><label class="form-label">Email Address *</label><input type="email" class="form-input" id="cf-email" placeholder="your@email.com" /></div>
-                <div class="form-group"><label class="form-label">Phone / M-PESA *</label><input type="text" class="form-input" id="cf-phone" placeholder="+254 7XX XXX XXX" /></div>
+          <div class="claims-sidebar">
+            <div class="card">
+              <h3 style="font-size:14px;font-weight:700;margin-bottom:16px">Claim History</h3>
+              <div id="sidebar-claim-history">
+                <p style="font-size:13px;color:var(--ink3)">No claims yet on this account.</p>
               </div>
-              <div class="form-group"><label class="form-label">Policy Number</label><input type="text" class="form-input" placeholder="e.g. INS-2025-0042 (leave blank if unknown)" /></div>
-              <div class="grid2">
-                <div class="form-group"><label class="form-label">Primary Platform *</label>
-                  <select class="form-select" id="cf-platform">
-                    <option value="">Select platform</option>
-                    <option>TikTok</option><option>YouTube</option><option>Instagram</option>
-                    <option>Twitter/X</option><option>Multiple Platforms</option>
-                  </select>
-                </div>
-                <div class="form-group"><label class="form-label">Type of Interruption *</label>
-                  <select class="form-select" id="cf-type">
-                    <option value="">Select reason</option>
-                    <option>Illness / Medical</option><option>Account Deactivation / Ban</option>
-                    <option>Demonetisation</option><option>Brand Deal Cancellation</option>
-                    <option>Algorithm-Driven Income Drop</option><option>Platform Technical Outage</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-              </div>
-              <div class="grid2">
-                <div class="form-group"><label class="form-label">Interruption Start Date *</label><input type="date" class="form-input" id="cf-start" /></div>
-                <div class="form-group"><label class="form-label">Expected / Actual End Date</label><input type="date" class="form-input" /></div>
-              </div>
-              <div class="form-group">
-                <label class="form-label">Evidence &amp; Supporting Documents *</label>
-                <div class="upload-zone" onclick="document.getElementById('evidence-upload').click()">
-                  <div class="icon">📎</div>
-                  <p><strong>Click to upload files</strong></p>
-                  <p>Platform screenshots, medical certificates, brand deal correspondence, income statements</p>
-                  <p style="font-size:11px;margin-top:6px">PDF, JPG, PNG — max 10MB per file</p>
-                </div>
-                <input type="file" id="evidence-upload" multiple accept=".pdf,.jpg,.jpeg,.png" style="display:none" onchange="showFiles(this)" />
-                <div class="file-list" id="file-list"></div>
-                <div class="upload-note">🔒 Documents are private and only accessible to INSUTOK's claims team.</div>
-              </div>
-              <div class="form-group"><label class="form-label">Description of Interruption *</label><textarea class="form-input" id="cf-desc" style="min-height:100px;resize:vertical" placeholder="Describe what happened — include dates, platforms affected, and any correspondence with the platform or brand..."></textarea></div>
-              <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="submitClaim()">Submit Claim →</button>
             </div>
-          </div>
-        </div>
-
-        <div class="claims-sidebar">
-          <div class="card">
-            <h3 style="font-size:14px;font-weight:700;margin-bottom:16px">Claim History</h3>
-            <div class="claim-history-item">
-              <div class="ref">CLM-2025-0041</div>
-              <div class="desc">Account deactivation · TikTok · Mar 2025</div>
-              <div class="status-row"><span class="status-pill status-approved">Approved</span><span style="font-size:12px;color:var(--green-dark);font-weight:600">KSh 7,500 paid</span></div>
+            <div class="card">
+              <h3 style="font-size:14px;font-weight:700;margin-bottom:10px">Need Help?</h3>
+              <p style="font-size:13px;color:var(--ink2);margin-bottom:14px">Our claims team is available Monday–Friday, 8am–6pm EAT.</p>
+              <a href="https://wa.me/254712528731" class="btn btn-primary" style="width:100%;justify-content:center;font-size:13px">💬 Chat on WhatsApp</a>
+              <a href="mailto:insutokapp@gmail.com" class="btn btn-outline" style="width:100%;justify-content:center;font-size:13px;margin-top:8px">✉️ Email Us</a>
+              <a href="tel:+254712528731" class="btn btn-outline" style="width:100%;justify-content:center;font-size:13px;margin-top:8px">📞 0712528731</a>
             </div>
-            <div class="claim-history-item">
-              <div class="ref">CLM-2025-0038</div>
-              <div class="desc">Illness / Medical · Feb 2025</div>
-              <div class="status-row"><span class="status-pill status-pending">Pending</span><span style="font-size:12px;color:var(--amber)">Awaiting medical cert</span></div>
-            </div>
-            <div class="claim-history-item">
-              <div class="ref">CLM-2025-0031</div>
-              <div class="desc">Brand deal cancellation · Jan 2025</div>
-              <div class="status-row"><span class="status-pill status-processing">Processing</span><span style="font-size:12px;color:var(--blue)">Verifying platform data</span></div>
-            </div>
-          </div>
-          <div class="card">
-            <h3 style="font-size:14px;font-weight:700;margin-bottom:10px">Need Help?</h3>
-            <p style="font-size:13px;color:var(--ink2);margin-bottom:14px">Our claims team is available Monday–Friday, 8am–6pm EAT.</p>
-            <a href="https://wa.me/254712528731" class="btn btn-primary" style="width:100%;justify-content:center;font-size:13px">💬 Chat on WhatsApp</a>
-            <a href="mailto:insutokapp@gmail.com" class="btn btn-outline" style="width:100%;justify-content:center;font-size:13px;margin-top:8px">✉️ Email Us</a>
-            <a href="tel:+254712528731" class="btn btn-outline" style="width:100%;justify-content:center;font-size:13px;margin-top:8px">📞 0712528731</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- ADMIN DASHBOARD (shown when logged in as admin) -->
+  <div id="admin-dashboard" style="display:none">
+    <div class="tab-section" style="padding-bottom:0">
+      <div class="container">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:32px;flex-wrap:wrap;gap:12px">
+          <div>
+            <div class="section-label" style="color:var(--amber)">Admin Portal</div>
+            <h2 class="section-title" style="margin-bottom:0">Claims Management</h2>
+          </div>
+          <button class="btn btn-ghost" onclick="doLogout()">Logout Admin</button>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--surface2);border-radius:var(--radius);padding:32px;margin-bottom:24px">
+          <h3 style="font-size:17px;font-weight:700;margin-bottom:20px;padding-bottom:12px;border-bottom:1px solid var(--surface2)">📋 All Submitted Claims</h3>
+          <div id="admin-claims-table">
+            <p style="font-size:14px;color:var(--ink3)">No claims submitted yet.</p>
+          </div>
+        </div>
+
+        <div style="background:var(--white);border:1px solid var(--surface2);border-radius:var(--radius);padding:32px">
+          <h3 style="font-size:17px;font-weight:700;margin-bottom:6px">✏️ Update Claim Status</h3>
+          <p style="font-size:14px;color:var(--ink2);margin-bottom:20px">Enter the claim reference and set the new status. The user will see this when they log in.</p>
+          <div class="grid2" style="max-width:600px">
+            <div class="form-group"><label class="form-label">Claim Reference</label><input type="text" class="form-input" id="admin-ref" placeholder="e.g. CLM-2025-123" /></div>
+            <div class="form-group"><label class="form-label">New Status</label>
+              <select class="form-select" id="admin-status">
+                <option value="Pending">Pending</option>
+                <option value="Processing">Processing</option>
+                <option value="Approved">Approved</option>
+                <option value="Rejected">Rejected</option>
+                <option value="Paid">Paid</option>
+              </select>
+            </div>
+            <div class="form-group" style="grid-column:1/-1"><label class="form-label">Admin Note (visible to user)</label><textarea class="form-input" id="admin-note" style="min-height:80px;resize:vertical" placeholder="e.g. Awaiting medical certificate. Please upload to proceed."></textarea></div>
+          </div>
+          <button class="btn btn-primary" onclick="adminUpdateStatus()">Update Status →</button>
+          <div id="admin-update-success" style="display:none;margin-top:14px;background:var(--green-light);border:1px solid rgba(22,163,127,.2);border-radius:var(--radius-sm);padding:12px;font-size:14px;color:var(--green-dark)">✅ Claim status updated successfully.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 
@@ -1224,13 +1317,7 @@ function toggleConnect(btnId, name) {
     btn.querySelector('span:nth-child(2)').textContent = name + ' — Authorised';
   }
 }
-function submitKYC() {
-  const checks = document.querySelectorAll('#tab-claims .checkbox-label input[type=checkbox]:checked');
-  if (checks.length < 3) { alert('Please agree to all legal disclosures before submitting.'); return; }
-  const box = document.getElementById('kyc-success');
-  box.style.display = 'block';
-  box.scrollIntoView({ behavior: 'smooth' });
-}
+// submitKYC defined below in Supabase section
 
 /* ===== CLAIMS ===== */
 function showFiles(input) {
@@ -1238,21 +1325,7 @@ function showFiles(input) {
   list.innerHTML = '';
   Array.from(input.files).forEach(f => { list.innerHTML += `<div style="padding:4px 0;display:flex;align-items:center;gap:6px">✅ <span>${f.name}</span> <span style="color:var(--ink3);font-size:11px">(${(f.size/1024).toFixed(0)} KB)</span></div>`; });
 }
-function submitClaim() {
-  const name = document.getElementById('cf-name').value.trim();
-  const email = document.getElementById('cf-email').value.trim();
-  const phone = document.getElementById('cf-phone').value.trim();
-  const platform = document.getElementById('cf-platform').value;
-  const type = document.getElementById('cf-type').value;
-  const start = document.getElementById('cf-start').value;
-  const desc = document.getElementById('cf-desc').value.trim();
-  if (!name || !email || !phone || !platform || !type || !start || !desc) { alert('Please complete all required fields (*)'); return; }
-  const ref = 'CLM-2025-' + String(Math.floor(Math.random()*900)+100);
-  document.getElementById('claimRef').textContent = ref;
-  document.getElementById('claimFormInner').style.display = 'none';
-  document.getElementById('claimSuccess').style.display = 'block';
-  document.getElementById('claimSuccess').scrollIntoView({ behavior: 'smooth' });
-}
+// submitClaim defined below in Supabase section
 function resetClaim() {
   document.getElementById('claimFormInner').style.display = 'block';
   document.getElementById('claimSuccess').style.display = 'none';
@@ -1273,13 +1346,7 @@ function submitContact() {
 /* ===== WAITLIST MODAL ===== */
 function openWaitlist() { document.getElementById('waitlistModal').classList.add('open'); }
 function closeWaitlist() { document.getElementById('waitlistModal').classList.remove('open'); }
-function submitWaitlist() {
-  const name = document.getElementById('wl-name').value.trim();
-  const email = document.getElementById('wl-email').value.trim();
-  if (!name || !email) { alert('Please enter your name and email.'); return; }
-  document.getElementById('waitlistForm').style.display = 'none';
-  document.getElementById('waitlistSuccess').style.display = 'block';
-}
+// submitWaitlist defined below in Supabase section
 document.getElementById('waitlistModal').addEventListener('click', function(e) { if (e.target === this) closeWaitlist(); });
 
 /* ===== FAQ ===== */
@@ -1308,8 +1375,342 @@ function downloadReport() {
   win.document.close();
 }
 
+/* ===== SUPABASE INIT ===== */
+const SUPABASE_URL  = 'https://iyxarzneuanbbavlqmlr.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml5eGFyem5ldWFuYmJhdmxxbWxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA1ODU1NDEsImV4cCI6MjA5NjE2MTU0MX0.ZkmjbKPrcBo0MgJaHSSuoVv8Hu_cn7vm8rGFClVgdVs';
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
+
+/* ===== AUTH FUNCTIONS ===== */
+async function doLogin() {
+  const email = document.getElementById('login-email').value.trim().toLowerCase();
+  const pass  = document.getElementById('login-pass').value;
+  const errEl = document.getElementById('loginError');
+  const btn   = document.querySelector('#auth-gate .btn-primary');
+
+  if (!email || !pass) {
+    errEl.textContent = 'Please enter both email and password.';
+    errEl.style.display = 'block'; return;
+  }
+
+  if (btn) { btn.textContent = 'Signing in…'; btn.disabled = true; }
+
+  // Fetch user row by email (plain-text password check — matches your existing schema)
+  const { data: users, error } = await sb
+    .from('users')
+    .select('*')
+    .ilike('email', email)
+    .limit(1);
+
+  if (error || !users || !users.length) {
+    errEl.textContent = 'No account found with that email address.';
+    errEl.style.display = 'block';
+    if (btn) { btn.textContent = 'Sign In →'; btn.disabled = false; }
+    return;
+  }
+
+  const user = users[0];
+
+  if (user.password !== pass) {
+    errEl.textContent = 'Incorrect password. Please try again.';
+    errEl.style.display = 'block';
+    if (btn) { btn.textContent = 'Sign In →'; btn.disabled = false; }
+    return;
+  }
+
+  errEl.style.display = 'none';
+
+  // Log session
+  await sb.from('login_sessions').insert({ user_id: user.id, email: user.email, role: user.role });
+
+  sessionStorage.setItem('insutok_user', JSON.stringify({
+    id: user.id, name: user.name, email: user.email, role: user.role
+  }));
+
+  if (btn) { btn.textContent = 'Sign In →'; btn.disabled = false; }
+  applySession(user);
+}
+
+async function doRegister() {
+  const name  = document.getElementById('reg-name').value.trim();
+  const email = document.getElementById('reg-email').value.trim().toLowerCase();
+  const pass  = document.getElementById('reg-pass').value;
+  const pass2 = document.getElementById('reg-pass2').value;
+
+  if (!name || !email || !pass || !pass2) { alert('Please fill in all fields.'); return; }
+  if (pass !== pass2) { alert('Passwords do not match.'); return; }
+  if (pass.length < 8) { alert('Password must be at least 8 characters.'); return; }
+
+  // Check duplicate
+  const { data: existing } = await sb.from('users').select('id').ilike('email', email).limit(1);
+  if (existing && existing.length) {
+    alert('An account with that email already exists. Please log in.'); return;
+  }
+
+  const { data: inserted, error } = await sb
+    .from('users')
+    .insert({ name, email, password: pass, role: 'user' })
+    .select()
+    .single();
+
+  if (error) { alert('Registration failed: ' + error.message); return; }
+
+  sessionStorage.setItem('insutok_user', JSON.stringify({
+    id: inserted.id, name: inserted.name, email: inserted.email, role: inserted.role
+  }));
+  applySession(inserted);
+}
+
+function applySession(user) {
+  document.getElementById('auth-gate').style.display = 'none';
+  if (user.role === 'admin') {
+    document.getElementById('admin-dashboard').style.display = 'block';
+    document.getElementById('user-dashboard').style.display  = 'none';
+    loadAdminClaims();
+  } else {
+    document.getElementById('user-dashboard').style.display  = 'block';
+    document.getElementById('admin-dashboard').style.display = 'none';
+    document.getElementById('dash-username').textContent = user.name || user.email;
+    loadUserClaims(user.id);
+  }
+}
+
+function doLogout() {
+  sessionStorage.removeItem('insutok_user');
+  document.getElementById('auth-gate').style.display       = 'block';
+  document.getElementById('user-dashboard').style.display  = 'none';
+  document.getElementById('admin-dashboard').style.display = 'none';
+  document.getElementById('login-email').value = '';
+  document.getElementById('login-pass').value  = '';
+  document.getElementById('loginError').style.display = 'none';
+}
+
+function restoreSession() {
+  const s = sessionStorage.getItem('insutok_user');
+  if (s) applySession(JSON.parse(s));
+}
+
+/* ===== ADMIN CLAIM HELPERS ===== */
+async function loadAdminClaims() {
+  const container = document.getElementById('admin-claims-table');
+  container.innerHTML = '<p style="font-size:14px;color:var(--ink3)">Loading…</p>';
+
+  const { data: rows, error } = await sb
+    .from('claims')
+    .select('*')
+    .order('submitted_at', { ascending: false });
+
+  if (error || !rows || !rows.length) {
+    container.innerHTML = '<p style="font-size:14px;color:var(--ink3)">No claims submitted yet.</p>';
+    return;
+  }
+
+  let html = `<table style="width:100%;border-collapse:collapse;font-size:13px">
+    <thead><tr style="background:var(--surface);text-align:left">
+      ${['Ref','Name','Email','Platform','Type','Start','Status','Submitted'].map(h=>`<th style="padding:8px 12px;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink2)">${h}</th>`).join('')}
+    </tr></thead><tbody>`;
+
+  rows.forEach(r => {
+    html += `<tr style="border-bottom:1px solid var(--surface2)">
+      <td style="padding:10px 12px;font-weight:600;color:var(--green)">${r.ref||'—'}</td>
+      <td style="padding:10px 12px">${r.name||'—'}</td>
+      <td style="padding:10px 12px;color:var(--ink2)">${r.email||'—'}</td>
+      <td style="padding:10px 12px">${r.platform||'—'}</td>
+      <td style="padding:10px 12px">${r.type||'—'}</td>
+      <td style="padding:10px 12px">${r.start_date||'—'}</td>
+      <td style="padding:10px 12px">${statusBadge(r.status)}</td>
+      <td style="padding:10px 12px;color:var(--ink3);font-size:12px">${(r.submitted_at||'').substring(0,16)}</td>
+    </tr>`;
+  });
+
+  html += '</tbody></table>';
+  container.innerHTML = html;
+}
+
+async function loadUserClaims(userId) {
+  const container = document.getElementById('user-claims-list');
+  container.innerHTML = '<p style="font-size:14px;color:var(--ink3)">Loading…</p>';
+
+  const { data: rows, error } = await sb
+    .from('claims')
+    .select('*')
+    .eq('user_id', userId)
+    .order('submitted_at', { ascending: false });
+
+  if (error || !rows || !rows.length) {
+    container.innerHTML = '<p style="font-size:14px;color:var(--ink3)">You have not submitted any claims yet.</p>';
+    const sidebar = document.getElementById('sidebar-claim-history');
+    if (sidebar) sidebar.innerHTML = '<p style="font-size:13px;color:var(--ink3)">No claims on file.</p>';
+    return;
+  }
+
+  container.innerHTML = rows.map(r => `
+    <div style="background:var(--white);border:1px solid var(--surface2);border-radius:var(--radius-sm);padding:20px;margin-bottom:14px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+        <div>
+          <div style="font-weight:700;font-size:15px">${r.ref||'—'}</div>
+          <div style="font-size:13px;color:var(--ink2);margin-top:2px">${r.platform||''} · ${r.type||''} · ${r.start_date||''}</div>
+        </div>
+        ${statusBadge(r.status)}
+      </div>
+      ${r.admin_note ? `<div style="margin-top:12px;background:var(--surface);border-radius:var(--radius-sm);padding:10px;font-size:13px;color:var(--ink2)">📌 Admin note: ${r.admin_note}</div>` : ''}
+      ${r.file_urls && JSON.parse(r.file_urls||'[]').length ? `<div style="margin-top:10px;font-size:12px;color:var(--ink3)">${JSON.parse(r.file_urls).length} file(s) attached</div>` : ''}
+    </div>`).join('');
+
+  const sidebar = document.getElementById('sidebar-claim-history');
+  if (sidebar) sidebar.innerHTML = rows.map(r =>
+    `<div style="border-bottom:1px solid var(--surface2);padding:8px 0;font-size:13px"><strong>${r.ref}</strong> — ${statusBadge(r.status)}</div>`
+  ).join('');
+}
+
+function statusBadge(s) {
+  const map = {
+    Pending:    ['#fff3e0','#e65100'],
+    Processing: ['#e3f2fd','#1565c0'],
+    Approved:   ['#e8f5e9','#2e7d32'],
+    Rejected:   ['#fce4ec','#c62828'],
+    Paid:       ['#e6f7f3','#0e7a61'],
+  };
+  const [bg, col] = map[s] || ['#f5f5f5','#555'];
+  return `<span style="background:${bg};color:${col};padding:3px 10px;border-radius:40px;font-size:11px;font-weight:700">${s}</span>`;
+}
+
+async function adminUpdateStatus() {
+  const ref    = document.getElementById('admin-ref').value.trim();
+  const status = document.getElementById('admin-status').value;
+  const note   = document.getElementById('admin-note').value.trim();
+  if (!ref) { alert('Please enter a claim reference.'); return; }
+
+  const { error } = await sb
+    .from('claims')
+    .update({ status, admin_note: note })
+    .eq('ref', ref);
+
+  if (error) { alert('Update failed: ' + error.message); return; }
+
+  const el = document.getElementById('admin-update-success');
+  el.style.display = 'block';
+  setTimeout(() => el.style.display = 'none', 3500);
+  loadAdminClaims();
+}
+
+/* ===== CLAIMS SUBMISSION ===== */
+async function submitClaim() {
+  const name     = document.getElementById('cf-name').value.trim();
+  const email    = document.getElementById('cf-email').value.trim();
+  const phone    = document.getElementById('cf-phone').value.trim();
+  const platform = document.getElementById('cf-platform').value;
+  const type     = document.getElementById('cf-type').value;
+  const start    = document.getElementById('cf-start').value;
+  const desc     = document.getElementById('cf-desc').value.trim();
+
+  if (!name || !email || !phone || !platform || !type || !start || !desc) {
+    alert('Please complete all required fields (*)'); return;
+  }
+
+  const ref = 'CLM-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*900)+100);
+  const session = sessionStorage.getItem('insutok_user');
+  const uid = session ? JSON.parse(session).id : null;
+
+  // Upload files to Supabase Storage
+  const fileInput = document.getElementById('evidence-upload');
+  const fileUrls  = [];
+
+  if (fileInput.files.length > 0) {
+    for (const file of fileInput.files) {
+      const path = `claims/${ref}/${Date.now()}_${file.name.replace(/\s+/g,'_')}`;
+      const { data, error: uploadErr } = await sb.storage
+        .from('claim-evidence')
+        .upload(path, file, { cacheControl: '3600', upsert: false });
+      if (!uploadErr) {
+        const { data: urlData } = sb.storage.from('claim-evidence').getPublicUrl(path);
+        fileUrls.push(urlData.publicUrl);
+      }
+    }
+  }
+
+  const { error } = await sb.from('claims').insert({
+    ref, user_id: uid, name, email, phone,
+    platform, type, start_date: start,
+    description: desc, file_urls: JSON.stringify(fileUrls),
+    status: 'Pending'
+  });
+
+  if (error) { alert('Submission failed: ' + error.message); return; }
+
+  document.getElementById('claimRef').textContent = ref;
+  document.getElementById('claimFormInner').style.display = 'none';
+  document.getElementById('claimSuccess').style.display   = 'block';
+  document.getElementById('claimSuccess').scrollIntoView({ behavior: 'smooth' });
+
+  if (uid) loadUserClaims(uid);
+}
+
+/* ===== KYC SUBMISSION ===== */
+async function submitKYC() {
+  const checks = document.querySelectorAll('#tab-claims .checkbox-label input[type=checkbox]:checked');
+  if (checks.length < 3) { alert('Please agree to all legal disclosures before submitting.'); return; }
+
+  const session = sessionStorage.getItem('insutok_user');
+  const uid = session ? JSON.parse(session).id : null;
+
+  // Gather platform rows
+  const platformRows = document.querySelectorAll('#platform-rows .platform-row');
+  const platforms = Array.from(platformRows).map(row => {
+    const sel = row.querySelector('select')?.value || '';
+    const handle = row.querySelector('input')?.value.trim() || '';
+    return sel + (handle ? ':' + handle : '');
+  }).filter(Boolean).join(', ');
+
+  const payload = {
+    user_id:          uid,
+    full_name:        document.querySelector('.kyc-block input[placeholder*="national ID"]')?.value.trim() || '',
+    national_id:      document.querySelector('.kyc-block input[placeholder*="12345678"]')?.value.trim() || '',
+    kra_pin:          document.querySelector('.kyc-block input[placeholder*="A000"]')?.value.trim() || '',
+    business_reg:     document.querySelector('.kyc-block input[placeholder*="BRS"]')?.value.trim() || '',
+    county:           document.querySelector('.kyc-block select')?.value || '',
+    content_niche:    document.querySelectorAll('.kyc-block select')[1]?.value || '',
+    platforms,
+    brands:           document.querySelector('.kyc-block textarea')?.value.trim() || '',
+    campaign_value:   document.querySelectorAll('.kyc-block input[type=number]')[0]?.value || '',
+    campaign_timeline:document.querySelectorAll('.kyc-block select')[2]?.value || '',
+    ban_count:        document.querySelectorAll('.kyc-block input[type=number]')[1]?.value || '',
+    monthly_income:   document.querySelectorAll('.kyc-block input[type=number]')[2]?.value || '',
+  };
+
+  const { error } = await sb.from('kyc').insert(payload);
+  if (error) { alert('KYC submission failed: ' + error.message); return; }
+
+  const box = document.getElementById('kyc-success');
+  box.style.display = 'block';
+  box.scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ===== WAITLIST SUBMISSION ===== */
+async function submitWaitlist() {
+  const name  = document.getElementById('wl-name').value.trim();
+  const email = document.getElementById('wl-email').value.trim();
+  const phone = document.getElementById('wl-phone')?.value.trim() || '';
+  const plan  = document.getElementById('wl-plan')?.value || '';
+
+  if (!name || !email) { alert('Please enter your name and email.'); return; }
+
+  const { error } = await sb.from('waitlist').insert({ name, email, phone, plan });
+
+  if (error && error.code === '23505') {
+    // Already on waitlist — still show success
+  } else if (error) {
+    alert('Could not join waitlist: ' + error.message); return;
+  }
+
+  document.getElementById('waitlistForm').style.display    = 'none';
+  document.getElementById('waitlistSuccess').style.display = 'block';
+}
+
 /* ===== INIT ===== */
-window.addEventListener('load', calcPremium);
+window.addEventListener('load', () => {
+  calcPremium();
+  restoreSession();
+});
 </script>
 </body>
 </html>
