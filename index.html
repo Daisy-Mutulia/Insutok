@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init("jgs6e6HhdOI8oT-XZ");</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="The first actuarially-priced income interruption insurance for Kenyan content creators." />
@@ -1335,14 +1337,29 @@ function resetClaim() {
 
 /* ===== CONTACT ===== */
 function submitContact() {
-  const name = document.getElementById('msg-name').value.trim();
-  const email = document.getElementById('msg-email').value.trim();
-  const body = document.getElementById('msg-body').value.trim();
-  if (!name || !email || !body) { alert('Please fill in all fields.'); return; }
-  document.getElementById('contactSuccess').style.display = 'block';
-  ['msg-name','msg-email','msg-body'].forEach(id => document.getElementById(id).value = '');
-}
+  const name    = document.getElementById('msg-name').value.trim();
+  const email   = document.getElementById('msg-email').value.trim();
+  const subject = document.getElementById('msg-subject').value;
+  const body    = document.getElementById('msg-body').value.trim();
 
+  if (!name || !email || !body) { alert('Please fill in all fields.'); return; }
+
+  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+    from_name:  name,
+    from_email: email,
+    subject:    subject,
+    message:    body
+  })
+  .then(() => {
+    document.getElementById('contactSuccess').style.display = 'block';
+    ['msg-name','msg-email','msg-body'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('msg-subject').selectedIndex = 0;
+  })
+  .catch(err => {
+    alert('Failed to send message. Please try WhatsApp or email us directly.');
+    console.error(err);
+  });
+}
 /* ===== WAITLIST MODAL ===== */
 function openWaitlist() { document.getElementById('waitlistModal').classList.add('open'); }
 function closeWaitlist() { document.getElementById('waitlistModal').classList.remove('open'); }
