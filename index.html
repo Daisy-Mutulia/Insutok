@@ -1,3 +1,4 @@
+cat > /home/claude/insutok.html << 'ENDOFFILE'
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -214,13 +215,6 @@
     .res-row span:first-child { color: rgba(255,255,255,0.45); }
     .res-row span:last-child { color: #fff; font-weight: 600; }
     .risk-badge { display: inline-flex; align-items: center; gap: 8px; padding: 5px 14px; border-radius: 40px; font-size: 13px; font-weight: 700; margin-top: 8px; }
-    .risk-weights { background: rgba(255,255,255,0.04); border-radius: var(--radius-sm); padding: 16px; margin-bottom: 20px; }
-    .risk-weight-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-    .risk-weight-row:last-child { margin-bottom: 0; }
-    .rwl { font-size: 12px; color: rgba(255,255,255,0.55); flex: 1; }
-    .rwbar { flex: 2; height: 5px; background: rgba(255,255,255,0.08); border-radius: 3px; overflow: hidden; }
-    .rwbar-fill { height: 100%; border-radius: 3px; background: var(--green); }
-    .rwpct { font-size: 11px; color: rgba(255,255,255,0.35); width: 32px; text-align: right; }
     .score-bar-wrap { background: rgba(255,255,255,0.08); border-radius: 4px; height: 7px; overflow: hidden; margin: 8px 0 4px; }
     .score-bar { height: 100%; border-radius: 4px; transition: width .4s, background .4s; }
     .score-range-labels { display: flex; justify-content: space-between; font-size: 10px; color: rgba(255,255,255,0.22); }
@@ -469,14 +463,12 @@
     <div class="container">
       <div class="section-label">The Problem</div>
       <h2 class="section-title">Why Content Creators<br/>Fall Through the Cracks</h2>
-      <p class="section-sub">Traditional insurance and social protection laws don't recognize content creators. When income stops, there's no safety net.</p>
-      <div class="grid3">
-        <div class="card"><div class="problem-icon" style="background:#fff3e0">⚡</div><h3>Algorithm Changes</h3><p>Platform algorithms can demonetize or reduce reach overnight, wiping out months of income with zero recourse.</p></div>
-        <div class="card"><div class="problem-icon" style="background:#fce4ec">🏥</div><h3>Illness &amp; Health</h3><p>Unlike salaried employees, content creators receive zero sick pay. A two-week illness can mean zero income.</p></div>
-        <div class="card"><div class="problem-icon" style="background:#e8f5e9">🔗</div><h3>Brand Deal Loss</h3><p>Sponsorships can end abruptly due to company budget cuts, shifting trends, or contract disputes.</p></div>
-        <div class="card"><div class="problem-icon" style="background:#ede7f6">🚫</div><h3>Account Deactivation</h3><p>Platform bans eliminate all income instantly with limited appeals and no compensation.</p></div>
-        <div class="card"><div class="problem-icon" style="background:#e3f2fd">📉</div><h3>Audience Decline</h3><p>Viral content fades. Income tied to views and subscriptions can halve in weeks without any wrongdoing.</p></div>
-        <div class="card"><div class="problem-icon" style="background:#fff9c4">⚖️</div><h3>No Legal Protection</h3><p>ILO, KIPPRA and Fairwork Kenya confirm: gig workers are excluded from social protection frameworks.</p></div>
+      <p class="section-sub">Traditional insurance and social protection laws don't recognise content creators. When income stops due to platform actions or market shifts, there's no safety net.</p>
+      <div class="grid2" style="max-width:860px">
+        <div class="card"><div class="problem-icon" style="background:#fff3e0">⚡</div><h3>Algorithm Changes</h3><p>Platform algorithms can demonetise or reduce reach overnight, wiping out months of income with zero recourse or compensation from the platform.</p></div>
+        <div class="card"><div class="problem-icon" style="background:#e8f5e9">🔗</div><h3>Brand Deal Loss</h3><p>Sponsorships can end abruptly due to company budget cuts, shifting trends, or contract disputes — leaving creators with no income replacement.</p></div>
+        <div class="card"><div class="problem-icon" style="background:#fce4ec">🚫</div><h3>Account Deactivation</h3><p>Platform bans eliminate all income instantly with limited appeals and no compensation, often with no prior warning to the creator.</p></div>
+        <div class="card"><div class="problem-icon" style="background:#e3f2fd">📉</div><h3>Audience Decline</h3><p>Viral content fades. Income tied to views and subscriptions can halve in weeks without any wrongdoing on the creator's part.</p></div>
       </div>
     </div>
   </div>
@@ -490,7 +482,7 @@
       <div class="feat-grid">
         <div class="feat-box"><div class="feat-icon">📊</div><h3>Income Dashboard</h3><p>Connect YouTube, TikTok, and Instagram APIs to automatically log daily income, views, and engagement as verifiable claim evidence.</p></div>
         <div class="feat-box"><div class="feat-icon">🔔</div><h3>Interruption Alerts</h3><p>Automatic detection of account deactivations, demonetisation events, and unusual income drops — your policy activates instantly via SMS and WhatsApp.</p></div>
-        <div class="feat-box"><div class="feat-icon">📋</div><h3>One-Tap Claims</h3><p>File a claim in under 60 seconds. Upload illness certificates, attach platform logs, and submit supporting documents from your phone.</p></div>
+        <div class="feat-box"><div class="feat-icon">📋</div><h3>One-Tap Claims</h3><p>File a claim in under 60 seconds. Upload platform logs, attach evidence, and submit supporting documents from your phone.</p></div>
         <div class="feat-box"><div class="feat-icon">🛡️</div><h3>Fraud Prevention</h3><p>Cross-references your claimed interruption against live platform data. Genuine claims are approved faster — within 48 hours.</p></div>
         <div class="feat-box"><div class="feat-icon">📚</div><h3>Financial Literacy</h3><p>In-app modules on budgeting, savings strategies, and diversifying income streams — built by our financial educators.</p></div>
         <div class="feat-box"><div class="feat-icon">📈</div><h3>Risk Score Tracking</h3><p>Monitor your risk score over time. Diversifying platforms and growing audiences actively lowers your premium at renewal.</p></div>
@@ -504,9 +496,9 @@
       <div class="section-label">How It Works</div>
       <h2 class="section-title">Claim in 5 Simple Steps</h2>
       <div class="steps-list">
-        <div class="step"><div class="step-num">01</div><div class="step-body"><h3>Interruption Occurs</h3><p>Your income stops due to illness, platform action, brand deal cancellation, or another covered event. INSUTOK detects anomalies via API monitoring and sends a WhatsApp alert.</p></div></div>
+        <div class="step"><div class="step-num">01</div><div class="step-body"><h3>Interruption Occurs</h3><p>Your income stops due to a platform action, algorithm change, brand deal cancellation, or audience decline. INSUTOK detects anomalies via API monitoring and sends a WhatsApp alert.</p></div></div>
         <div class="step"><div class="step-num">02</div><div class="step-body"><h3>Waiting Period Begins</h3><p>Your chosen waiting period (7–30 days) starts. This filters minor, self-resolving interruptions and keeps premiums affordable for the whole pool.</p></div></div>
-        <div class="step"><div class="step-num">03</div><div class="step-body"><h3>Submit Your Claim</h3><p>Open the INSUTOK app and tap "File Claim." Upload platform logs, medical certificates, or brand deal correspondence. Takes under 2 minutes.</p></div></div>
+        <div class="step"><div class="step-num">03</div><div class="step-body"><h3>Submit Your Claim</h3><p>Open the INSUTOK app and tap "File Claim." Upload platform logs, brand deal correspondence, or audience analytics. Takes under 2 minutes.</p></div></div>
         <div class="step"><div class="step-num">04</div><div class="step-body"><h3>Automated Verification</h3><p>Our system cross-references your platform data, income history, and submitted documents. Straightforward claims are approved within 48 hours.</p></div></div>
         <div class="step"><div class="step-num">05</div><div class="step-body"><h3>Payment Released</h3><p>Your income replacement payment is disbursed directly to your M-PESA or bank — up to 60% of average daily income for each covered day.</p></div></div>
       </div>
@@ -538,10 +530,14 @@
       <h2 class="section-title">The Science Behind<br/>Fair Pricing</h2>
       <p class="section-sub">Built on peer-reviewed actuarial models adapted for the realities of digital creator income in Kenya.</p>
       <div class="math-grid">
-        <div class="math-card"><h3>📊 Claim Frequency Model</h3><p>Interruptions per year are modelled using a <strong>Poisson distribution</strong> — ideal for counting rare, independent events over time. Survey data from Kenyan creators shows an average of 2.0 interruptions per year, varying by platform and audience size.</p></div>
+        <div class="math-card">
+          <h3>📊 Claim Frequency Model</h3>
+          <p>Interruptions per year are modelled using a <strong>Negative Binomial distribution</strong> — better suited than Poisson for count data that exhibits <em>overdispersion</em>, where real-world variance exceeds the mean. Creator income interruptions cluster in bursts (e.g. algorithm updates affecting many creators simultaneously), making the Negative Binomial's extra flexibility essential for accurate pricing.</p>
+          <p>The model is parameterised by mean <strong>μ</strong> (expected interruptions per year) and dispersion parameter <strong>r</strong>, with variance = μ + μ²/r.</p>
+        </div>
         <div class="math-card"><h3>📈 Claim Severity Model</h3><p>Monetary loss per interruption is modelled using a <strong>Lognormal distribution</strong> — suited to right-skewed income with a zero lower bound. Each claim's financial impact is estimated using your income level, replacement ratio, and expected duration.</p></div>
         <div class="math-card"><h3>💰 Premium Calculation</h3><p>Final premium combines expected loss with actuarial loadings for admin, profit margin, and adverse selection risk. Example: 2 interruptions/yr × KSh 15,000 severity × 1.20 loading = <strong>KSh 36,000/yr</strong></p></div>
-        <div class="math-card"><h3>🛡️ Risk Score Model</h3><p>Risk is scored across three factors with actuarial weights, producing a composite score that determines your premium band. Scores range from 1.00 (highest risk) to 3.00 (lowest risk). High: 1.00–1.60 | Medium: 1.61–2.30 | Low: 2.31–3.00.</p></div>
+        <div class="math-card"><h3>🛡️ Risk Score Model</h3><p>Risk is scored across three factors — History of Bans, Content Niche, and Platform Concentration — producing a composite score that determines your premium band. Scores range from 1.00 (highest risk) to 3.00 (lowest risk). High: 1.00–1.60 · Medium: 1.61–2.30 · Low: 2.31–3.00.</p></div>
       </div>
     </div>
   </div>
@@ -551,7 +547,7 @@
     <div class="container">
       <div class="section-label">Coverage Plans</div>
       <h2 class="section-title">Choose Your<br/>Protection Level</h2>
-      <p class="section-sub">Risk-classified pricing ensures you pay premiums tailored to your actual risk profile.</p>
+      <p class="section-sub">Risk-classified pricing ensures you pay premiums tailored to your actual risk profile. All plans cover algorithm changes, brand deal loss, account deactivation, and audience decline.</p>
       <div class="plans-grid">
         <div class="plan-card">
           <div class="plan-tier">Bronze</div>
@@ -559,7 +555,7 @@
           <div class="plan-price">KSh 18,000/yr <span>· KSh 1,500/mo</span></div>
           <ul class="plan-features">
             <li>30-day waiting period</li><li>50% income replacement</li><li>Up to 30 days per claim</li>
-            <li>Max 1 claim per year</li><li>Illness coverage only</li><li>M-PESA payouts</li><li>Basic INSUTOK app</li>
+            <li>Max 1 claim per year</li><li>Algorithm &amp; deactivation cover</li><li>M-PESA payouts</li><li>Basic INSUTOK app</li>
           </ul>
           <button class="btn btn-outline" style="width:100%;justify-content:center" onclick="openWaitlist()">Get Started →</button>
         </div>
@@ -570,7 +566,7 @@
           <div class="plan-price">KSh 36,000/yr <span>· KSh 3,000/mo</span></div>
           <ul class="plan-features">
             <li>7-day waiting period</li><li>60% income replacement</li><li>Up to 60 days per claim</li>
-            <li>Max 3 claims per year</li><li>All disruption types</li><li>Full INSUTOK dashboard</li>
+            <li>Max 3 claims per year</li><li>All 4 covered disruption types</li><li>Full INSUTOK dashboard</li>
             <li>Platform API verification</li><li>Financial literacy coaching</li>
             <li>M-PESA or bank payouts</li><li>Priority WhatsApp support</li>
           </ul>
@@ -582,7 +578,7 @@
           <div class="plan-price">KSh 27,000/yr <span>· KSh 2,250/mo</span></div>
           <ul class="plan-features">
             <li>14-day waiting period</li><li>55% income replacement</li><li>Up to 45 days per claim</li>
-            <li>Max 2 claims per year</li><li>Illness + brand deal loss</li><li>INSUTOK app access</li>
+            <li>Max 2 claims per year</li><li>Algorithm, brand deal &amp; deactivation cover</li><li>INSUTOK app access</li>
             <li>M-PESA payouts</li><li>Claims tracking portal</li>
           </ul>
           <button class="btn btn-outline" style="width:100%;justify-content:center" onclick="openWaitlist()">Get Started →</button>
@@ -610,7 +606,8 @@
       <div class="charts-grid">
         <div class="chart-card">
           <h3>Frequency Risk Distribution</h3>
-          <p>Probability of exactly X interruptions this year, based on your expected average (Poisson model).</p>
+          <p>Probability of exactly X interruptions this year — modelled using the <strong>Negative Binomial distribution</strong> to capture the overdispersion observed in real creator interruption data.</p>
+          <p style="font-size:11px;color:var(--ink3)">Mean (μ): <span id="nbMuDisplay">2</span> · Dispersion (r): <span id="nbRDisplay">3</span></p>
           <canvas id="poissonChart"></canvas>
         </div>
         <div class="chart-card">
@@ -622,30 +619,35 @@
       </div>
 
       <div style="margin-top:48px">
-        <div class="section-label">Risk Profile Explainer</div>
-        <h2 class="section-title">How Your Risk Score<br/>Is Calculated</h2>
-        <div class="grid3" style="margin-top:32px">
+        <div class="section-label">Coverage Categories</div>
+        <h2 class="section-title">What INSUTOK Covers</h2>
+        <div class="grid2" style="margin-top:32px;max-width:900px">
           <div class="card">
-            <div style="font-size:32px;margin-bottom:16px">📛</div>
-            <h3>History of Bans — 50%</h3>
-            <p>The most influential factor. Prior bans within 24 months signal a pattern of content-policy violations. Zero bans = score 1 (lowest risk). 3+ bans = score 5 (highest risk).</p>
+            <div style="font-size:32px;margin-bottom:16px">⚡</div>
+            <h3>Algorithm Changes</h3>
+            <p>Sudden demonetisation or reach suppression triggered by platform algorithm updates — verified through API income-drop detection against your 90-day baseline.</p>
           </div>
           <div class="card">
-            <div style="font-size:32px;margin-bottom:16px">🎬</div>
-            <h3>Content Niche Risk — 40%</h3>
-            <p>High-risk niches (politics, controversial commentary, adult-adjacent) face greater algorithmic scrutiny. Low-risk niches (education, cooking, fitness) carry lower interruption probability.</p>
+            <div style="font-size:32px;margin-bottom:16px">🔗</div>
+            <h3>Brand Deal Loss</h3>
+            <p>Abrupt cancellation of active sponsorship agreements due to brand budget cuts, force majeure, or unilateral contract termination — supported by deal correspondence evidence.</p>
           </div>
           <div class="card">
-            <div style="font-size:32px;margin-bottom:16px">📱</div>
-            <h3>Platform Concentration — 10%</h3>
-            <p>Relying on a single platform means a single point of failure. Creators on 3+ platforms have diversified income, making total interruption far less likely.</p>
+            <div style="font-size:32px;margin-bottom:16px">🚫</div>
+            <h3>Account Deactivation</h3>
+            <p>Full platform ban or account suspension that eliminates monetisation — verified directly against platform status APIs and official platform notifications.</p>
+          </div>
+          <div class="card">
+            <div style="font-size:32px;margin-bottom:16px">📉</div>
+            <h3>Audience Decline</h3>
+            <p>Sustained drop in subscriber or follower count causing measurable income loss, assessed against a rolling 90-day income average and platform analytics data.</p>
           </div>
         </div>
-        <div class="card" style="margin-top:20px;background:var(--ink);color:#fff;border:none">
-          <h3 style="color:#fff;margin-bottom:12px">Risk Score Formula</h3>
-          <p style="color:rgba(255,255,255,0.6);margin-bottom:10px">Weighted raw score (1–5 scale) = (BanScore × 0.5) + (NicheScore × 0.4) + (PlatformScore × 0.1)</p>
-          <p style="color:rgba(255,255,255,0.6);margin-bottom:10px">Mapped to final score: 3.00 − ((raw − 1) / 4 × 2) → range [1.00, 3.00]</p>
-          <p style="color:rgba(255,255,255,0.6)">Band classification: High Risk 1.00–1.60 · Medium Risk 1.61–2.30 · Low Risk 2.31–3.00</p>
+        <div class="card" style="margin-top:20px;background:var(--ink);color:#fff;border:none;max-width:900px">
+          <h3 style="color:#fff;margin-bottom:12px">Premium Formula</h3>
+          <p style="color:rgba(255,255,255,0.6);margin-bottom:10px">Expected Annual Loss = μ × Average Severity per Interruption</p>
+          <p style="color:rgba(255,255,255,0.6);margin-bottom:10px">Annual Premium = Expected Annual Loss × Risk Loading Factor</p>
+          <p style="color:rgba(255,255,255,0.6)">Frequency modelled via Negative Binomial(μ, r) · Severity modelled via Lognormal(μ_sev, σ)</p>
         </div>
       </div>
     </div>
@@ -658,7 +660,7 @@
 ============================================= -->
 <div class="tab-panel" id="tab-claims">
 
-  <!-- AUTH GATE (shown when logged out) -->
+  <!-- AUTH GATE -->
   <div id="auth-gate">
     <div class="tab-section">
       <div class="container" style="max-width:960px">
@@ -693,7 +695,7 @@
     </div>
   </div>
 
-  <!-- USER DASHBOARD (shown when logged in as normal user) -->
+  <!-- USER DASHBOARD -->
   <div id="user-dashboard" style="display:none">
     <div class="tab-section" style="padding-bottom:0">
       <div class="container">
@@ -707,19 +709,18 @@
       </div>
     </div>
 
-    <!-- PREMIUM CALCULATOR (moved here from Pricing tab) -->
+    <!-- PREMIUM CALCULATOR -->
     <div class="tab-section-alt">
       <div class="container">
         <div class="section-label">Premium Calculator</div>
         <h2 class="section-title">Know Your Premium<br/>in 60 Seconds</h2>
-        <p class="section-sub">Powered by actuarially fair pricing. Risk scoring uses 3 factors: <strong>History of Bans · Content Niche · Platform Concentration</strong></p>
+        <p class="section-sub">Powered by actuarially fair pricing using the Negative Binomial frequency model. Risk is scored across three factors: <strong>History of Bans · Content Niche · Platform Concentration</strong></p>
 
         <div class="calc-layout">
-          <!-- LEFT: INPUTS -->
           <div class="calc-panel">
             <div class="factor-card">
               <div class="factor-card-title">Platform Concentration</div>
-              <div class="factor-card-weight">Weight: 10% of risk score</div>
+              <div class="factor-card-weight">Single-platform dependence increases total interruption risk</div>
               <select class="form-select" id="c-platform" onchange="calcPremium()">
                 <option value="5">100% dependent on one platform — Score: 5 (Highest Risk)</option>
                 <option value="3" selected>2 platforms for income — Score: 3 (Medium)</option>
@@ -728,7 +729,7 @@
             </div>
             <div class="factor-card">
               <div class="factor-card-title">Content Niche Risk</div>
-              <div class="factor-card-weight">Weight: 40% of risk score</div>
+              <div class="factor-card-weight">High-risk niches face greater algorithmic and policy scrutiny</div>
               <select class="form-select" id="c-niche" onchange="calcPremium()">
                 <option value="5">High-risk niche (highly susceptible to bans) — Score: 5</option>
                 <option value="3" selected>Medium-risk niche (moderately susceptible) — Score: 3</option>
@@ -737,7 +738,7 @@
             </div>
             <div class="factor-card">
               <div class="factor-card-title">History of Bans (within 24 months)</div>
-              <div class="factor-card-weight">Weight: 50% of risk score — most influential factor</div>
+              <div class="factor-card-weight">Prior bans are the strongest predictor of future interruptions</div>
               <select class="form-select" id="c-bans" onchange="calcPremium()">
                 <option value="5">3 or more bans — Score: 5 (Highest Risk)</option>
                 <option value="3">1–2 bans — Score: 3 (Medium)</option>
@@ -752,7 +753,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label">Interruptions per Year</label>
+              <label class="form-label">Expected Interruptions per Year (μ)</label>
               <div class="range-row">
                 <input type="range" min="1" max="30" step="1" value="2" id="c-lambda-range" oninput="syncInput('lambda','range')" />
                 <input type="number" min="1" step="1" value="2" id="c-lambda" class="num-input" oninput="syncInput('lambda','num')" placeholder="e.g. 2" />
@@ -784,14 +785,7 @@
             </div>
           </div>
 
-          <!-- RIGHT: RESULT -->
           <div class="calc-result">
-            <div class="risk-weights">
-              <div style="font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:12px">Risk Factor Weights</div>
-              <div class="risk-weight-row"><span class="rwl">History of Bans</span><div class="rwbar"><div class="rwbar-fill" style="width:50%"></div></div><span class="rwpct">50%</span></div>
-              <div class="risk-weight-row"><span class="rwl">Content Niche</span><div class="rwbar"><div class="rwbar-fill" style="width:40%"></div></div><span class="rwpct">40%</span></div>
-              <div class="risk-weight-row"><span class="rwl">Platform Concentration</span><div class="rwbar"><div class="rwbar-fill" style="width:10%"></div></div><span class="rwpct">10%</span></div>
-            </div>
             <div class="res-label">Weighted Risk Score</div>
             <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:6px">
               <span id="r-score" style="font-family:'Syne',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-1px">1.90</span>
@@ -826,9 +820,7 @@
         <div class="section-label">My Claims</div>
         <h2 class="section-title" style="font-size:28px">Claim Status Tracker</h2>
         <p style="font-size:15px;color:var(--ink2);margin-bottom:32px">View the latest status of claims filed under your account.</p>
-        <div id="user-claims-list" style="max-width:760px">
-          <!-- Populated by JS -->
-        </div>
+        <div id="user-claims-list" style="max-width:760px"></div>
       </div>
     </div>
 
@@ -975,9 +967,10 @@
                   <div class="form-group"><label class="form-label">Type of Interruption *</label>
                     <select class="form-select" id="cf-type">
                       <option value="">Select reason</option>
-                      <option>Illness / Medical</option><option>Account Deactivation / Ban</option>
-                      <option>Demonetisation</option><option>Brand Deal Cancellation</option>
-                      <option>Algorithm-Driven Income Drop</option><option>Platform Technical Outage</option>
+                      <option>Account Deactivation / Ban</option>
+                      <option>Algorithm-Driven Income Drop</option>
+                      <option>Brand Deal Cancellation</option>
+                      <option>Audience Decline</option>
                       <option>Other</option>
                     </select>
                   </div>
@@ -991,7 +984,7 @@
                   <div class="upload-zone" onclick="document.getElementById('evidence-upload').click()">
                     <div class="icon">📎</div>
                     <p><strong>Click to upload files</strong></p>
-                    <p>Platform screenshots, medical certificates, brand deal correspondence, income statements</p>
+                    <p>Platform screenshots, analytics exports, brand deal correspondence, income statements</p>
                     <p style="font-size:11px;margin-top:6px">PDF, JPG, PNG — max 10MB per file</p>
                   </div>
                   <input type="file" id="evidence-upload" multiple accept=".pdf,.jpg,.jpeg,.png" style="display:none" onchange="showFiles(this)" />
@@ -1024,7 +1017,7 @@
     </div>
   </div>
 
-  <!-- ADMIN DASHBOARD (shown when logged in as admin) -->
+  <!-- ADMIN DASHBOARD -->
   <div id="admin-dashboard" style="display:none">
     <div class="tab-section" style="padding-bottom:0">
       <div class="container">
@@ -1057,7 +1050,7 @@
                 <option value="Paid">Paid</option>
               </select>
             </div>
-            <div class="form-group" style="grid-column:1/-1"><label class="form-label">Admin Note (visible to user)</label><textarea class="form-input" id="admin-note" style="min-height:80px;resize:vertical" placeholder="e.g. Awaiting medical certificate. Please upload to proceed."></textarea></div>
+            <div class="form-group" style="grid-column:1/-1"><label class="form-label">Admin Note (visible to user)</label><textarea class="form-input" id="admin-note" style="min-height:80px;resize:vertical" placeholder="e.g. Awaiting platform analytics export. Please upload to proceed."></textarea></div>
           </div>
           <button class="btn btn-primary" onclick="adminUpdateStatus()">Update Status →</button>
           <div id="admin-update-success" style="display:none;margin-top:14px;background:var(--green-light);border:1px solid rgba(22,163,127,.2);border-radius:var(--radius-sm);padding:12px;font-size:14px;color:var(--green-dark)">✅ Claim status updated successfully.</div>
@@ -1108,8 +1101,8 @@
       <h2 class="section-title">Common Questions<br/>Answered</h2>
       <div class="faq-list" style="margin-top:40px;text-align:left">
         <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Who is INSUTOK for?</div><div class="faq-a">INSUTOK is designed for Kenyan content creators who earn income from platforms like TikTok, YouTube, and Instagram. Whether you're a full-time creator or earn a portion of your income from digital content, INSUTOK can protect you.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What triggers a claim?</div><div class="faq-a">Covered events include platform account deactivation or bans, algorithm-driven demonetisation, illness preventing you from creating content, brand deal cancellations, and significant audience or income decline. Full terms in the policy document.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How is my premium calculated?</div><div class="faq-a">Your premium is based on three weighted risk factors: History of bans (50%), Content niche risk (40%), and Platform concentration (10%). These produce a risk score that feeds into an actuarial model to produce a fair, personalised premium.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What triggers a claim?</div><div class="faq-a">Covered events include: algorithm-driven demonetisation or income suppression, account deactivation or platform bans, brand deal cancellations, and significant audience or income decline. Full terms are in the policy document.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How is my premium calculated?</div><div class="faq-a">Your premium is based on three risk factors: History of Bans, Content Niche Risk, and Platform Concentration. These are combined into a composite risk score which feeds into our Negative Binomial frequency model and Lognormal severity model to produce a fair, personalised premium.</div></div>
         <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How quickly are claims paid?</div><div class="faq-a">Straightforward claims verified through platform API data are typically approved within 48 hours of submission. Payments are made directly to your M-PESA or bank account. Complex claims may take up to 7 business days.</div></div>
         <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is my personal and platform data safe?</div><div class="faq-a">All data is stored securely and never sold to third parties. The public data scan authorisation covers only publicly visible social media information for risk assessment. Documents you upload in claims are private and only accessible to the claims team.</div></div>
         <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">When does INSUTOK launch?</div><div class="faq-a">INSUTOK is currently in the research and development phase. Join the waitlist to be notified first when we open for enrolment — early joiners receive a launch discount.</div></div>
@@ -1119,7 +1112,7 @@
 </div>
 
 
-<!-- ===== FOOTER (shown on all tabs) ===== -->
+<!-- ===== FOOTER ===== -->
 <footer>
   <div class="container">
     <div class="footer-inner">
@@ -1177,7 +1170,6 @@ let currentSeverity = 15000;
 
 function fmt(n) { return Math.round(n).toLocaleString('en-KE'); }
 
-// Keep slider and number input in sync, then recalculate
 function syncInput(field, source) {
   const ids = { income: ['c-income-range','c-income'], lambda: ['c-lambda-range','c-lambda'], duration: ['c-duration-range','c-duration'] };
   const [rangeId, numId] = ids[field];
@@ -1187,7 +1179,6 @@ function syncInput(field, source) {
     numEl.value = rangeEl.value;
   } else {
     const v = parseInt(numEl.value) || 0;
-    // Clamp slider to its own max so it doesn't error; number input is uncapped
     rangeEl.value = Math.min(v, parseInt(rangeEl.max));
   }
   calcPremium();
@@ -1211,12 +1202,12 @@ function calcPremium() {
     riskLabel = 'High Risk'; riskColor = '#c0392b'; riskBg = 'rgba(192,57,43,0.15)';
     scorePct = Math.round(((weightedScore - 1.00) / 0.60) * 33);
     loadingFactor = 1.35;
-    riskNote = 'High risk profile. Single-platform dependence, high-risk niche, and a history of bans drive your premium up significantly. Diversify platforms and maintain clean content to lower your score at renewal.';
+    riskNote = 'High risk profile detected. Diversify across multiple platforms and maintain a clean content record to lower your score and premium at renewal.';
   } else if (weightedScore <= 2.30) {
     riskLabel = 'Medium Risk'; riskColor = '#e67e22'; riskBg = 'rgba(230,126,34,0.15)';
     scorePct = 33 + Math.round(((weightedScore - 1.61) / 0.69) * 34);
     loadingFactor = 1.20;
-    riskNote = 'Standard risk. Reducing ban history and diversifying platforms are the two most effective ways to lower your premium at renewal. The History of Bans factor carries 50% of the risk weight.';
+    riskNote = 'Standard risk profile. Reducing past bans and diversifying platforms are the most effective ways to lower your premium at renewal.';
   } else {
     riskLabel = 'Low Risk'; riskColor = '#16a37f'; riskBg = 'rgba(22,163,127,0.15)';
     scorePct = 67 + Math.round(((weightedScore - 2.31) / 0.69) * 33);
@@ -1224,6 +1215,7 @@ function calcPremium() {
     riskNote = 'Low risk profile. You qualify for INSUTOK\'s best rates. Maintain your platform diversification and clean content record to keep this rating at renewal.';
   }
 
+  const r_nb = 3;
   const dailyIncome   = income / 30;
   const severity      = dailyIncome * coverage * duration;
   const expectedLoss  = lambda * severity;
@@ -1257,25 +1249,42 @@ function calcPremium() {
   document.getElementById('cov-max').textContent      = 'KSh ' + fmt(maxPayout);
   document.getElementById('cov-wait').textContent     = waiting + ' days';
   document.getElementById('severityDisplay').textContent = 'KSh ' + fmt(severity);
+
+  const muEl = document.getElementById('nbMuDisplay');
+  const rEl  = document.getElementById('nbRDisplay');
+  if (muEl) muEl.textContent = lambda;
+  if (rEl)  rEl.textContent  = r_nb;
 }
 
 /* ===== CHARTS ===== */
 let poissonChart = null, lognormalChart = null;
 
-function poissonPMF(k, lambda) {
-  let lnP = k * Math.log(lambda) - lambda;
-  for (let i = 2; i <= k; i++) lnP -= Math.log(i);
-  return Math.exp(lnP);
+function negBinomPMF(k, mu, r) {
+  if (k < 0) return 0;
+  const p = r / (r + mu);
+  function logGamma(n) {
+    if (n <= 0) return 0;
+    let x = n, result = 0;
+    while (x < 10) { result -= Math.log(x); x++; }
+    result += (x - 0.5) * Math.log(x) - x + 0.5 * Math.log(2 * Math.PI);
+    result += 1/(12*x) - 1/(360*x*x*x);
+    return result;
+  }
+  const logComb = logGamma(k + r) - logGamma(r) - logGamma(k + 1);
+  const logP = logComb + r * Math.log(p) + k * Math.log(1 - p);
+  return Math.exp(logP);
 }
+
 function lognormalPDF(x, mu, sigma) {
   if (x <= 0) return 0;
   const z = (Math.log(x) - mu) / sigma;
   return Math.exp(-0.5 * z * z) / (x * sigma * Math.sqrt(2 * Math.PI));
 }
 
-function updateCharts(lambda, severity) {
-  const kVals = [0,1,2,3,4,5,6,7,8];
-  const pVals = kVals.map(k => parseFloat(poissonPMF(k, lambda).toFixed(4)));
+function updateCharts(mu, severity) {
+  const r_nb = 3;
+  const kVals = [0,1,2,3,4,5,6,7,8,9,10];
+  const pVals = kVals.map(k => parseFloat(negBinomPMF(k, mu, r_nb).toFixed(4)));
 
   if (poissonChart) {
     poissonChart.data.datasets[0].data = pVals;
@@ -1285,15 +1294,25 @@ function updateCharts(lambda, severity) {
     if (!ctx) return;
     poissonChart = new Chart(ctx, {
       type: 'bar',
-      data: { labels: kVals.map(k => k + ' events'), datasets: [{ label: 'P(N=k)', data: pVals, backgroundColor: 'rgba(22,163,127,0.75)', borderRadius: 5 }] },
-      options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { callback: v => (v*100).toFixed(1)+'%' } }, x: { title: { display: true, text: 'No. of Interruptions' } } } }
+      data: {
+        labels: kVals.map(k => k + ' events'),
+        datasets: [{ label: 'P(N=k)', data: pVals, backgroundColor: 'rgba(22,163,127,0.75)', borderRadius: 5 }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true, ticks: { callback: v => (v*100).toFixed(1)+'%' } },
+          x: { title: { display: true, text: 'No. of Interruptions (Negative Binomial)' } }
+        }
+      }
     });
   }
 
-  const mu = Math.log(Math.max(severity, 1000)), sigma = 0.8;
+  const muSev = Math.log(Math.max(severity, 1000)), sigma = 0.8;
   const xMin = severity * 0.1, xMax = severity * 4, step = (xMax - xMin) / 60;
   const xVals = Array.from({length: 60}, (_, i) => Math.round(xMin + i * step));
-  const yVals = xVals.map(x => parseFloat(lognormalPDF(x, mu, sigma).toFixed(6)));
+  const yVals = xVals.map(x => parseFloat(lognormalPDF(x, muSev, sigma).toFixed(6)));
 
   if (lognormalChart) {
     lognormalChart.data.labels = xVals.map(x => 'KSh ' + Math.round(x/1000) + 'K');
@@ -1304,8 +1323,18 @@ function updateCharts(lambda, severity) {
     if (!ctx2) return;
     lognormalChart = new Chart(ctx2, {
       type: 'line',
-      data: { labels: xVals.map(x => 'KSh ' + Math.round(x/1000) + 'K'), datasets: [{ label: 'Probability Density', data: yVals, borderColor: '#16a37f', backgroundColor: 'rgba(22,163,127,0.08)', fill: true, tension: 0.4, pointRadius: 0 }] },
-      options: { responsive: true, maintainAspectRatio: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true }, x: { ticks: { maxTicksLimit: 6 }, title: { display: true, text: 'Loss Amount (KSh)' } } } }
+      data: {
+        labels: xVals.map(x => 'KSh ' + Math.round(x/1000) + 'K'),
+        datasets: [{ label: 'Probability Density', data: yVals, borderColor: '#16a37f', backgroundColor: 'rgba(22,163,127,0.08)', fill: true, tension: 0.4, pointRadius: 0 }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          y: { beginAtZero: true },
+          x: { ticks: { maxTicksLimit: 6 }, title: { display: true, text: 'Loss Amount (KSh)' } }
+        }
+      }
     });
   }
 }
@@ -1315,7 +1344,7 @@ function addPlatformRow() {
   const container = document.getElementById('platform-rows');
   const row = document.createElement('div');
   row.className = 'platform-row';
-  row.innerHTML = `<select class="form-select" style="flex:1"><option>TikTok</option><option>YouTube</option><option>Instagram</option><option>Facebook</option><option>X (Twitter)</option></select><input type="text" class="form-input" placeholder="Exact handle e.g. @your_username" style="flex:2" /><button class="rm-btn" onclick="removePlatformRow(this)">Remove</button>`;
+  row.innerHTML = '<select class="form-select" style="flex:1"><option>TikTok</option><option>YouTube</option><option>Instagram</option><option>Facebook</option><option>X (Twitter)</option></select><input type="text" class="form-input" placeholder="Exact handle e.g. @your_username" style="flex:2" /><button class="rm-btn" onclick="removePlatformRow(this)">Remove</button>';
   container.appendChild(row);
 }
 function removePlatformRow(btn) {
@@ -1332,15 +1361,13 @@ function toggleConnect(btnId, name) {
     btn.querySelector('span:nth-child(2)').textContent = name + ' — Authorised';
   }
 }
-// submitKYC defined below in Supabase section
 
 /* ===== CLAIMS ===== */
 function showFiles(input) {
   const list = document.getElementById('file-list');
   list.innerHTML = '';
-  Array.from(input.files).forEach(f => { list.innerHTML += `<div style="padding:4px 0;display:flex;align-items:center;gap:6px">✅ <span>${f.name}</span> <span style="color:var(--ink3);font-size:11px">(${(f.size/1024).toFixed(0)} KB)</span></div>`; });
+  Array.from(input.files).forEach(f => { list.innerHTML += '<div style="padding:4px 0;display:flex;align-items:center;gap:6px">✅ <span>' + f.name + '</span> <span style="color:var(--ink3);font-size:11px">(' + (f.size/1024).toFixed(0) + ' KB)</span></div>'; });
 }
-// submitClaim defined below in Supabase section
 function resetClaim() {
   document.getElementById('claimFormInner').style.display = 'block';
   document.getElementById('claimSuccess').style.display = 'none';
@@ -1354,29 +1381,19 @@ function submitContact() {
   const email   = document.getElementById('msg-email').value.trim();
   const subject = document.getElementById('msg-subject').value;
   const body    = document.getElementById('msg-body').value.trim();
-
   if (!name || !email || !body) { alert('Please fill in all fields.'); return; }
-
-  emailjs.send("service_txoywld", "template_ebx8ept", {
-    from_name:  name,
-    from_email: email,
-    subject:    subject,
-    message:    body
-  })
+  emailjs.send("service_txoywld", "template_ebx8ept", { from_name: name, from_email: email, subject: subject, message: body })
   .then(() => {
     document.getElementById('contactSuccess').style.display = 'block';
     ['msg-name','msg-email','msg-body'].forEach(id => document.getElementById(id).value = '');
     document.getElementById('msg-subject').selectedIndex = 0;
   })
- .catch(err => {
-    alert('Error: ' + JSON.stringify(err));
-    console.error(err);
-  });
+  .catch(err => { alert('Error: ' + JSON.stringify(err)); console.error(err); });
 }
+
 /* ===== WAITLIST MODAL ===== */
 function openWaitlist() { document.getElementById('waitlistModal').classList.add('open'); }
 function closeWaitlist() { document.getElementById('waitlistModal').classList.remove('open'); }
-// submitWaitlist defined below in Supabase section
 document.getElementById('waitlistModal').addEventListener('click', function(e) { if (e.target === this) closeWaitlist(); });
 
 /* ===== FAQ ===== */
@@ -1401,7 +1418,7 @@ function downloadReport() {
   const now = new Date().toLocaleDateString('en-KE', {year:'numeric',month:'long',day:'numeric'});
   const ref = 'RISK-' + Date.now().toString(36).toUpperCase();
   const win = window.open('', '_blank');
-  win.document.write(`<!DOCTYPE html><html><head><title>INSUTOK Risk Report</title><style>body{font-family:Arial,sans-serif;max-width:700px;margin:40px auto;color:#1a1a2e;font-size:14px}h1{font-size:28px;margin-bottom:4px}h2{font-size:16px;margin-top:28px;border-bottom:2px solid #16a37f;padding-bottom:6px;color:#16a37f}table{width:100%;border-collapse:collapse;margin-top:14px}td{padding:8px 12px;border-bottom:1px solid #eee}td:first-child{color:#666;width:50%}td:last-child{font-weight:600}.badge{background:#e6f7f3;color:#0e7a61;padding:4px 12px;border-radius:40px;font-size:12px;font-weight:700}@media print{button{display:none}}</style></head><body><div style="display:flex;justify-content:space-between;margin-bottom:32px"><div><h1>INSU<span style="color:#16a37f">TOK</span></h1><p style="color:#888;font-size:12px">Income-Interruption Risk Profile</p></div><div style="text-align:right"><strong>${now}</strong><div style="color:#888;font-size:12px">${ref}</div></div></div><h2>1. Risk Score</h2><table><tr><td>Weighted Risk Score</td><td>${score} / 3.00</td></tr><tr><td>Risk Classification</td><td><span class="badge">${risk}</span></td></tr></table><h2>2. Creator Risk Profile</h2><table><tr><td>Monthly Income</td><td>KSh ${income}</td></tr><tr><td>Interruptions / Year</td><td>${lambda}</td></tr><tr><td>Avg. Duration</td><td>${dur}</td></tr></table><h2>3. Premium Breakdown</h2><table><tr><td>Daily Benefit</td><td>${dailyBenefit}</td></tr><tr><td>Expected Loss per Year</td><td>${el}</td></tr><tr><td>Risk Loading</td><td>${loading}</td></tr><tr><td style="font-weight:700">Annual Premium</td><td style="font-weight:700;color:#16a37f">${premium}</td></tr></table><p style="margin-top:40px;color:#999;font-size:11px">INSUTOK Team · November 2025. References: ILO (2024), Fairwork Kenya (2021), KIPPRA (2025), MDPI (2023).</p><button onclick="window.print()" style="margin-top:20px;padding:10px 24px;background:#16a37f;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:14px">🖨️ Print / Save as PDF</button></body></html>`);
+  win.document.write('<!DOCTYPE html><html><head><title>INSUTOK Risk Report</title><style>body{font-family:Arial,sans-serif;max-width:700px;margin:40px auto;color:#1a1a2e;font-size:14px}h1{font-size:28px;margin-bottom:4px}h2{font-size:16px;margin-top:28px;border-bottom:2px solid #16a37f;padding-bottom:6px;color:#16a37f}table{width:100%;border-collapse:collapse;margin-top:14px}td{padding:8px 12px;border-bottom:1px solid #eee}td:first-child{color:#666;width:50%}td:last-child{font-weight:600}.badge{background:#e6f7f3;color:#0e7a61;padding:4px 12px;border-radius:40px;font-size:12px;font-weight:700}@media print{button{display:none}}</style></head><body><div style="display:flex;justify-content:space-between;margin-bottom:32px"><div><h1>INSU<span style="color:#16a37f">TOK</span></h1><p style="color:#888;font-size:12px">Income-Interruption Risk Profile</p></div><div style="text-align:right"><strong>' + now + '</strong><div style="color:#888;font-size:12px">' + ref + '</div></div></div><h2>1. Risk Score</h2><table><tr><td>Weighted Risk Score</td><td>' + score + ' / 3.00</td></tr><tr><td>Risk Classification</td><td><span class="badge">' + risk + '</span></td></tr></table><h2>2. Creator Risk Profile</h2><table><tr><td>Monthly Income</td><td>KSh ' + income + '</td></tr><tr><td>Expected Interruptions / Year (\u03bc)</td><td>' + lambda + '</td></tr><tr><td>Avg. Duration</td><td>' + dur + '</td></tr><tr><td>Frequency Model</td><td>Negative Binomial (r=3)</td></tr></table><h2>3. Premium Breakdown</h2><table><tr><td>Daily Benefit</td><td>' + dailyBenefit + '</td></tr><tr><td>Expected Loss per Year</td><td>' + el + '</td></tr><tr><td>Risk Loading</td><td>' + loading + '</td></tr><tr><td style="font-weight:700">Annual Premium</td><td style="font-weight:700;color:#16a37f">' + premium + '</td></tr></table><p style="margin-top:40px;color:#999;font-size:11px">INSUTOK Team \u00b7 November 2025. References: ILO (2024), Fairwork Kenya (2021), KIPPRA (2025), MDPI (2023).</p><button onclick="window.print()" style="margin-top:20px;padding:10px 24px;background:#16a37f;color:#fff;border:none;border-radius:6px;cursor:pointer;font-size:14px">\uD83D\uDDB8\uFE0F Print / Save as PDF</button></body></html>');
   win.document.close();
 }
 
@@ -1410,53 +1427,28 @@ const SUPABASE_URL  = 'https://iyxarzneuanbbavlqmlr.supabase.co';
 const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml5eGFyem5ldWFuYmJhdmxxbWxyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA1ODU1NDEsImV4cCI6MjA5NjE2MTU0MX0.ZkmjbKPrcBo0MgJaHSSuoVv8Hu_cn7vm8rGFClVgdVs';
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON);
 
-/* ===== AUTH FUNCTIONS ===== */
+/* ===== AUTH ===== */
 async function doLogin() {
   const email = document.getElementById('login-email').value.trim().toLowerCase();
   const pass  = document.getElementById('login-pass').value;
   const errEl = document.getElementById('loginError');
   const btn   = document.querySelector('#auth-gate .btn-primary');
-
-  if (!email || !pass) {
-    errEl.textContent = 'Please enter both email and password.';
-    errEl.style.display = 'block'; return;
-  }
-
-  if (btn) { btn.textContent = 'Signing in…'; btn.disabled = true; }
-
-  // Fetch user row by email (plain-text password check — matches your existing schema)
-  const { data: users, error } = await sb
-    .from('users')
-    .select('*')
-    .ilike('email', email)
-    .limit(1);
-
+  if (!email || !pass) { errEl.textContent = 'Please enter both email and password.'; errEl.style.display = 'block'; return; }
+  if (btn) { btn.textContent = 'Signing in\u2026'; btn.disabled = true; }
+  const { data: users, error } = await sb.from('users').select('*').ilike('email', email).limit(1);
   if (error || !users || !users.length) {
-    errEl.textContent = 'No account found with that email address.';
-    errEl.style.display = 'block';
-    if (btn) { btn.textContent = 'Sign In →'; btn.disabled = false; }
-    return;
+    errEl.textContent = 'No account found with that email address.'; errEl.style.display = 'block';
+    if (btn) { btn.textContent = 'Login \u2192'; btn.disabled = false; } return;
   }
-
   const user = users[0];
-
   if (user.password !== pass) {
-    errEl.textContent = 'Incorrect password. Please try again.';
-    errEl.style.display = 'block';
-    if (btn) { btn.textContent = 'Sign In →'; btn.disabled = false; }
-    return;
+    errEl.textContent = 'Incorrect password. Please try again.'; errEl.style.display = 'block';
+    if (btn) { btn.textContent = 'Login \u2192'; btn.disabled = false; } return;
   }
-
   errEl.style.display = 'none';
-
-  // Log session
   await sb.from('login_sessions').insert({ user_id: user.id, email: user.email, role: user.role });
-
-  sessionStorage.setItem('insutok_user', JSON.stringify({
-    id: user.id, name: user.name, email: user.email, role: user.role
-  }));
-
-  if (btn) { btn.textContent = 'Sign In →'; btn.disabled = false; }
+  sessionStorage.setItem('insutok_user', JSON.stringify({ id: user.id, name: user.name, email: user.email, role: user.role }));
+  if (btn) { btn.textContent = 'Login \u2192'; btn.disabled = false; }
   applySession(user);
 }
 
@@ -1465,28 +1457,14 @@ async function doRegister() {
   const email = document.getElementById('reg-email').value.trim().toLowerCase();
   const pass  = document.getElementById('reg-pass').value;
   const pass2 = document.getElementById('reg-pass2').value;
-
   if (!name || !email || !pass || !pass2) { alert('Please fill in all fields.'); return; }
   if (pass !== pass2) { alert('Passwords do not match.'); return; }
   if (pass.length < 8) { alert('Password must be at least 8 characters.'); return; }
-
-  // Check duplicate
   const { data: existing } = await sb.from('users').select('id').ilike('email', email).limit(1);
-  if (existing && existing.length) {
-    alert('An account with that email already exists. Please log in.'); return;
-  }
-
-  const { data: inserted, error } = await sb
-    .from('users')
-    .insert({ name, email, password: pass, role: 'user' })
-    .select()
-    .single();
-
+  if (existing && existing.length) { alert('An account with that email already exists. Please log in.'); return; }
+  const { data: inserted, error } = await sb.from('users').insert({ name, email, password: pass, role: 'user' }).select().single();
   if (error) { alert('Registration failed: ' + error.message); return; }
-
-  sessionStorage.setItem('insutok_user', JSON.stringify({
-    id: inserted.id, name: inserted.name, email: inserted.email, role: inserted.role
-  }));
+  sessionStorage.setItem('insutok_user', JSON.stringify({ id: inserted.id, name: inserted.name, email: inserted.email, role: inserted.role }));
   applySession(inserted);
 }
 
@@ -1519,89 +1497,37 @@ function restoreSession() {
   if (s) applySession(JSON.parse(s));
 }
 
-/* ===== ADMIN CLAIM HELPERS ===== */
+/* ===== ADMIN ===== */
 async function loadAdminClaims() {
   const container = document.getElementById('admin-claims-table');
-  container.innerHTML = '<p style="font-size:14px;color:var(--ink3)">Loading…</p>';
-
-  const { data: rows, error } = await sb
-    .from('claims')
-    .select('*')
-    .order('submitted_at', { ascending: false });
-
-  if (error || !rows || !rows.length) {
-    container.innerHTML = '<p style="font-size:14px;color:var(--ink3)">No claims submitted yet.</p>';
-    return;
-  }
-
-  let html = `<table style="width:100%;border-collapse:collapse;font-size:13px">
-    <thead><tr style="background:var(--surface);text-align:left">
-      ${['Ref','Name','Email','Platform','Type','Start','Status','Submitted'].map(h=>`<th style="padding:8px 12px;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink2)">${h}</th>`).join('')}
-    </tr></thead><tbody>`;
-
-  rows.forEach(r => {
-    html += `<tr style="border-bottom:1px solid var(--surface2)">
-      <td style="padding:10px 12px;font-weight:600;color:var(--green)">${r.ref||'—'}</td>
-      <td style="padding:10px 12px">${r.name||'—'}</td>
-      <td style="padding:10px 12px;color:var(--ink2)">${r.email||'—'}</td>
-      <td style="padding:10px 12px">${r.platform||'—'}</td>
-      <td style="padding:10px 12px">${r.type||'—'}</td>
-      <td style="padding:10px 12px">${r.start_date||'—'}</td>
-      <td style="padding:10px 12px">${statusBadge(r.status)}</td>
-      <td style="padding:10px 12px;color:var(--ink3);font-size:12px">${(r.submitted_at||'').substring(0,16)}</td>
-    </tr>`;
-  });
-
+  container.innerHTML = '<p style="font-size:14px;color:var(--ink3)">Loading\u2026</p>';
+  const { data: rows, error } = await sb.from('claims').select('*').order('submitted_at', { ascending: false });
+  if (error || !rows || !rows.length) { container.innerHTML = '<p style="font-size:14px;color:var(--ink3)">No claims submitted yet.</p>'; return; }
+  let html = '<table style="width:100%;border-collapse:collapse;font-size:13px"><thead><tr style="background:var(--surface);text-align:left">' + ['Ref','Name','Email','Platform','Type','Start','Status','Submitted'].map(h=>'<th style="padding:8px 12px;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.5px;color:var(--ink2)">' + h + '</th>').join('') + '</tr></thead><tbody>';
+  rows.forEach(r => { html += '<tr style="border-bottom:1px solid var(--surface2)"><td style="padding:10px 12px;font-weight:600;color:var(--green)">' + (r.ref||'—') + '</td><td style="padding:10px 12px">' + (r.name||'—') + '</td><td style="padding:10px 12px;color:var(--ink2)">' + (r.email||'—') + '</td><td style="padding:10px 12px">' + (r.platform||'—') + '</td><td style="padding:10px 12px">' + (r.type||'—') + '</td><td style="padding:10px 12px">' + (r.start_date||'—') + '</td><td style="padding:10px 12px">' + statusBadge(r.status) + '</td><td style="padding:10px 12px;color:var(--ink3);font-size:12px">' + (r.submitted_at||'').substring(0,16) + '</td></tr>'; });
   html += '</tbody></table>';
   container.innerHTML = html;
 }
 
 async function loadUserClaims(userId) {
   const container = document.getElementById('user-claims-list');
-  container.innerHTML = '<p style="font-size:14px;color:var(--ink3)">Loading…</p>';
-
-  const { data: rows, error } = await sb
-    .from('claims')
-    .select('*')
-    .eq('user_id', userId)
-    .order('submitted_at', { ascending: false });
-
+  container.innerHTML = '<p style="font-size:14px;color:var(--ink3)">Loading\u2026</p>';
+  const { data: rows, error } = await sb.from('claims').select('*').eq('user_id', userId).order('submitted_at', { ascending: false });
   if (error || !rows || !rows.length) {
     container.innerHTML = '<p style="font-size:14px;color:var(--ink3)">You have not submitted any claims yet.</p>';
     const sidebar = document.getElementById('sidebar-claim-history');
     if (sidebar) sidebar.innerHTML = '<p style="font-size:13px;color:var(--ink3)">No claims on file.</p>';
     return;
   }
-
-  container.innerHTML = rows.map(r => `
-    <div style="background:var(--white);border:1px solid var(--surface2);border-radius:var(--radius-sm);padding:20px;margin-bottom:14px">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
-        <div>
-          <div style="font-weight:700;font-size:15px">${r.ref||'—'}</div>
-          <div style="font-size:13px;color:var(--ink2);margin-top:2px">${r.platform||''} · ${r.type||''} · ${r.start_date||''}</div>
-        </div>
-        ${statusBadge(r.status)}
-      </div>
-      ${r.admin_note ? `<div style="margin-top:12px;background:var(--surface);border-radius:var(--radius-sm);padding:10px;font-size:13px;color:var(--ink2)">📌 Admin note: ${r.admin_note}</div>` : ''}
-      ${r.file_urls && JSON.parse(r.file_urls||'[]').length ? `<div style="margin-top:10px;font-size:12px;color:var(--ink3)">${JSON.parse(r.file_urls).length} file(s) attached</div>` : ''}
-    </div>`).join('');
-
+  container.innerHTML = rows.map(r => '<div style="background:var(--white);border:1px solid var(--surface2);border-radius:var(--radius-sm);padding:20px;margin-bottom:14px"><div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px"><div><div style="font-weight:700;font-size:15px">' + (r.ref||'—') + '</div><div style="font-size:13px;color:var(--ink2);margin-top:2px">' + (r.platform||'') + ' \u00b7 ' + (r.type||'') + ' \u00b7 ' + (r.start_date||'') + '</div></div>' + statusBadge(r.status) + '</div>' + (r.admin_note ? '<div style="margin-top:12px;background:var(--surface);border-radius:var(--radius-sm);padding:10px;font-size:13px;color:var(--ink2)">\uD83D\uDCCC Admin note: ' + r.admin_note + '</div>' : '') + '</div>').join('');
   const sidebar = document.getElementById('sidebar-claim-history');
-  if (sidebar) sidebar.innerHTML = rows.map(r =>
-    `<div style="border-bottom:1px solid var(--surface2);padding:8px 0;font-size:13px"><strong>${r.ref}</strong> — ${statusBadge(r.status)}</div>`
-  ).join('');
+  if (sidebar) sidebar.innerHTML = rows.map(r => '<div style="border-bottom:1px solid var(--surface2);padding:8px 0;font-size:13px"><strong>' + r.ref + '</strong> \u2014 ' + statusBadge(r.status) + '</div>').join('');
 }
 
 function statusBadge(s) {
-  const map = {
-    Pending:    ['#fff3e0','#e65100'],
-    Processing: ['#e3f2fd','#1565c0'],
-    Approved:   ['#e8f5e9','#2e7d32'],
-    Rejected:   ['#fce4ec','#c62828'],
-    Paid:       ['#e6f7f3','#0e7a61'],
-  };
+  const map = { Pending: ['#fff3e0','#e65100'], Processing: ['#e3f2fd','#1565c0'], Approved: ['#e8f5e9','#2e7d32'], Rejected: ['#fce4ec','#c62828'], Paid: ['#e6f7f3','#0e7a61'] };
   const [bg, col] = map[s] || ['#f5f5f5','#555'];
-  return `<span style="background:${bg};color:${col};padding:3px 10px;border-radius:40px;font-size:11px;font-weight:700">${s}</span>`;
+  return '<span style="background:' + bg + ';color:' + col + ';padding:3px 10px;border-radius:40px;font-size:11px;font-weight:700">' + s + '</span>';
 }
 
 async function adminUpdateStatus() {
@@ -1609,14 +1535,8 @@ async function adminUpdateStatus() {
   const status = document.getElementById('admin-status').value;
   const note   = document.getElementById('admin-note').value.trim();
   if (!ref) { alert('Please enter a claim reference.'); return; }
-
-  const { error } = await sb
-    .from('claims')
-    .update({ status, admin_note: note })
-    .eq('ref', ref);
-
+  const { error } = await sb.from('claims').update({ status, admin_note: note }).eq('ref', ref);
   if (error) { alert('Update failed: ' + error.message); return; }
-
   const el = document.getElementById('admin-update-success');
   el.style.display = 'block';
   setTimeout(() => el.style.display = 'none', 3500);
@@ -1632,46 +1552,25 @@ async function submitClaim() {
   const type     = document.getElementById('cf-type').value;
   const start    = document.getElementById('cf-start').value;
   const desc     = document.getElementById('cf-desc').value.trim();
-
-  if (!name || !email || !phone || !platform || !type || !start || !desc) {
-    alert('Please complete all required fields (*)'); return;
-  }
-
+  if (!name || !email || !phone || !platform || !type || !start || !desc) { alert('Please complete all required fields (*)'); return; }
   const ref = 'CLM-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*900)+100);
   const session = sessionStorage.getItem('insutok_user');
   const uid = session ? JSON.parse(session).id : null;
-
-  // Upload files to Supabase Storage
   const fileInput = document.getElementById('evidence-upload');
   const fileUrls  = [];
-
   if (fileInput.files.length > 0) {
     for (const file of fileInput.files) {
-      const path = `claims/${ref}/${Date.now()}_${file.name.replace(/\s+/g,'_')}`;
-      const { data, error: uploadErr } = await sb.storage
-        .from('claim-evidence')
-        .upload(path, file, { cacheControl: '3600', upsert: false });
-      if (!uploadErr) {
-        const { data: urlData } = sb.storage.from('claim-evidence').getPublicUrl(path);
-        fileUrls.push(urlData.publicUrl);
-      }
+      const path = 'claims/' + ref + '/' + Date.now() + '_' + file.name.replace(/\s+/g,'_');
+      const { error: uploadErr } = await sb.storage.from('claim-evidence').upload(path, file, { cacheControl: '3600', upsert: false });
+      if (!uploadErr) { const { data: urlData } = sb.storage.from('claim-evidence').getPublicUrl(path); fileUrls.push(urlData.publicUrl); }
     }
   }
-
-  const { error } = await sb.from('claims').insert({
-    ref, user_id: uid, name, email, phone,
-    platform, type, start_date: start,
-    description: desc, file_urls: JSON.stringify(fileUrls),
-    status: 'Pending'
-  });
-
+  const { error } = await sb.from('claims').insert({ ref, user_id: uid, name, email, phone, platform, type, start_date: start, description: desc, file_urls: JSON.stringify(fileUrls), status: 'Pending' });
   if (error) { alert('Submission failed: ' + error.message); return; }
-
   document.getElementById('claimRef').textContent = ref;
   document.getElementById('claimFormInner').style.display = 'none';
   document.getElementById('claimSuccess').style.display   = 'block';
   document.getElementById('claimSuccess').scrollIntoView({ behavior: 'smooth' });
-
   if (uid) loadUserClaims(uid);
 }
 
@@ -1679,59 +1578,45 @@ async function submitClaim() {
 async function submitKYC() {
   const checks = document.querySelectorAll('#tab-claims .checkbox-label input[type=checkbox]:checked');
   if (checks.length < 3) { alert('Please agree to all legal disclosures before submitting.'); return; }
-
   const session = sessionStorage.getItem('insutok_user');
   const uid = session ? JSON.parse(session).id : null;
-
-  // Gather platform rows
   const platformRows = document.querySelectorAll('#platform-rows .platform-row');
   const platforms = Array.from(platformRows).map(row => {
     const sel = row.querySelector('select')?.value || '';
     const handle = row.querySelector('input')?.value.trim() || '';
     return sel + (handle ? ':' + handle : '');
   }).filter(Boolean).join(', ');
-
   const payload = {
-    user_id:          uid,
-    full_name:        document.querySelector('.kyc-block input[placeholder*="national ID"]')?.value.trim() || '',
-    national_id:      document.querySelector('.kyc-block input[placeholder*="12345678"]')?.value.trim() || '',
-    kra_pin:          document.querySelector('.kyc-block input[placeholder*="A000"]')?.value.trim() || '',
-    business_reg:     document.querySelector('.kyc-block input[placeholder*="BRS"]')?.value.trim() || '',
-    county:           document.querySelector('.kyc-block select')?.value || '',
-    content_niche:    document.querySelectorAll('.kyc-block select')[1]?.value || '',
+    user_id: uid,
+    full_name:         document.querySelector('.kyc-block input[placeholder*="national ID"]')?.value.trim() || '',
+    national_id:       document.querySelector('.kyc-block input[placeholder*="12345678"]')?.value.trim() || '',
+    kra_pin:           document.querySelector('.kyc-block input[placeholder*="A000"]')?.value.trim() || '',
+    business_reg:      document.querySelector('.kyc-block input[placeholder*="BRS"]')?.value.trim() || '',
+    county:            document.querySelector('.kyc-block select')?.value || '',
+    content_niche:     document.querySelectorAll('.kyc-block select')[1]?.value || '',
     platforms,
-    brands:           document.querySelector('.kyc-block textarea')?.value.trim() || '',
-    campaign_value:   document.querySelectorAll('.kyc-block input[type=number]')[0]?.value || '',
-    campaign_timeline:document.querySelectorAll('.kyc-block select')[2]?.value || '',
-    ban_count:        document.querySelectorAll('.kyc-block input[type=number]')[1]?.value || '',
-    monthly_income:   document.querySelectorAll('.kyc-block input[type=number]')[2]?.value || '',
+    brands:            document.querySelector('.kyc-block textarea')?.value.trim() || '',
+    campaign_value:    document.querySelectorAll('.kyc-block input[type=number]')[0]?.value || '',
+    campaign_timeline: document.querySelectorAll('.kyc-block select')[2]?.value || '',
+    ban_count:         document.querySelectorAll('.kyc-block input[type=number]')[1]?.value || '',
+    monthly_income:    document.querySelectorAll('.kyc-block input[type=number]')[2]?.value || '',
   };
-
   const { error } = await sb.from('kyc').insert(payload);
   if (error) { alert('KYC submission failed: ' + error.message); return; }
-
   const box = document.getElementById('kyc-success');
   box.style.display = 'block';
   box.scrollIntoView({ behavior: 'smooth' });
 }
 
-/* ===== WAITLIST SUBMISSION ===== */
+/* ===== WAITLIST ===== */
 async function submitWaitlist() {
   const name  = document.getElementById('wl-name').value.trim();
   const email = document.getElementById('wl-email').value.trim();
   const phone = document.getElementById('wl-phone')?.value.trim() || '';
   const plan  = document.getElementById('wl-plan')?.value || '';
-
   if (!name || !email) { alert('Please enter your name and email.'); return; }
-
   const { error } = await sb.from('waitlist').insert({ name, email, phone, plan });
-
-  if (error && error.code === '23505') {
-    // Already on waitlist — still show success
-  } else if (error) {
-    alert('Could not join waitlist: ' + error.message); return;
-  }
-
+  if (error && error.code !== '23505') { alert('Could not join waitlist: ' + error.message); return; }
   document.getElementById('waitlistForm').style.display    = 'none';
   document.getElementById('waitlistSuccess').style.display = 'block';
 }
@@ -1744,3 +1629,5 @@ window.addEventListener('load', () => {
 </script>
 </body>
 </html>
+ENDOFFILE
+echo "Done: $(wc -l < /home/claude/insutok.html) lines"
