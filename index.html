@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -721,29 +720,27 @@
             <div class="factor-card">
               <div class="factor-card-title">Platform Concentration</div>
               <div class="factor-card-weight">Single-platform dependence increases total interruption risk</div>
-              <select class="form-select" id="c-platform" onchange="calcPremium()">
-                <option value="5">100% dependent on one platform — Score: 5 (Highest Risk)</option>
-                <option value="3" selected>2 platforms for income — Score: 3 (Medium)</option>
-                <option value="1">3 or more platforms — Score: 1 (Lowest Risk)</option>
-              </select>
+              <input type="number" class="form-input" id="c-platform-count" min="1" max="10" step="1" value="2" oninput="updatePlatformRisk()" placeholder="How many platforms do you earn from?" />
+              <div id="platform-risk-badge" class="risk-badge"></div>
+              <input type="hidden" id="c-platform" value="3" />
             </div>
             <div class="factor-card">
               <div class="factor-card-title">Content Niche Risk</div>
               <div class="factor-card-weight">High-risk niches face greater algorithmic and policy scrutiny</div>
-              <select class="form-select" id="c-niche" onchange="calcPremium()">
-                <option value="5">High-risk niche (highly susceptible to bans) — Score: 5</option>
-                <option value="3" selected>Medium-risk niche (moderately susceptible) — Score: 3</option>
-                <option value="1">Low-risk niche (unlikely to violate guidelines) — Score: 1</option>
+              <select class="form-select" id="c-niche-type" onchange="updateNicheRisk()">
+                <option value="5">High-risk niche (highly susceptible to bans)</option>
+                <option value="3" selected>Medium-risk niche (moderately susceptible)</option>
+                <option value="1">Low-risk niche (unlikely to violate guidelines)</option>
               </select>
+              <div id="niche-risk-badge" class="risk-badge"></div>
+              <input type="hidden" id="c-niche" value="3" />
             </div>
             <div class="factor-card">
               <div class="factor-card-title">History of Bans (within 24 months)</div>
               <div class="factor-card-weight">Prior bans are the strongest predictor of future interruptions</div>
-              <select class="form-select" id="c-bans" onchange="calcPremium()">
-                <option value="5">3 or more bans — Score: 5 (Highest Risk)</option>
-                <option value="3">1–2 bans — Score: 3 (Medium)</option>
-                <option value="1" selected>Zero bans — Score: 1 (Lowest Risk)</option>
-              </select>
+              <input type="number" class="form-input" id="c-bans-count" min="0" max="50" step="1" value="0" oninput="updateBansRisk()" placeholder="How many bans/strikes in the last 24 months?" />
+              <div id="bans-risk-badge" class="risk-badge"></div>
+              <input type="hidden" id="c-bans" value="1" />
             </div>
             <div class="form-group">
               <label class="form-label">Monthly Income (KSh)</label>
@@ -1181,6 +1178,49 @@ function syncInput(field, source) {
     const v = parseInt(numEl.value) || 0;
     rangeEl.value = Math.min(v, parseInt(rangeEl.max));
   }
+  calcPremium();
+}
+
+function setRiskBadge(elId, score) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  let label, bg, col;
+  if (score === 5) { label = 'Highest Risk'; bg = 'rgba(192,57,43,.15)'; col = '#c0392b'; }
+  else if (score === 3) { label = 'Medium Risk'; bg = 'rgba(230,126,34,.15)'; col = '#e67e22'; }
+  else { label = 'Lowest Risk'; bg = 'rgba(22,163,127,.15)'; col = '#16a37f'; }
+  el.textContent = label;
+  el.style.background = bg;
+  el.style.color = col;
+}
+
+function updatePlatformRisk() {
+  const countEl = document.getElementById('c-platform-count');
+  const count = Math.max(1, parseInt(countEl.value) || 1);
+  let score;
+  if (count === 1) score = 5;
+  else if (count === 2) score = 3;
+  else score = 1;
+  document.getElementById('c-platform').value = score;
+  setRiskBadge('platform-risk-badge', score);
+  calcPremium();
+}
+
+function updateNicheRisk() {
+  const score = parseInt(document.getElementById('c-niche-type').value);
+  document.getElementById('c-niche').value = score;
+  setRiskBadge('niche-risk-badge', score);
+  calcPremium();
+}
+
+function updateBansRisk() {
+  const countEl = document.getElementById('c-bans-count');
+  const count = Math.max(0, parseInt(countEl.value) || 0);
+  let score;
+  if (count >= 3) score = 5;
+  else if (count >= 1) score = 3;
+  else score = 1;
+  document.getElementById('c-bans').value = score;
+  setRiskBadge('bans-risk-badge', score);
   calcPremium();
 }
 
@@ -1623,11 +1663,12 @@ async function submitWaitlist() {
 
 /* ===== INIT ===== */
 window.addEventListener('load', () => {
+  updatePlatformRisk();
+  updateNicheRisk();
+  updateBansRisk();
   calcPremium();
   restoreSession();
 });
 </script>
 </body>
 </html>
-ENDOFFILE
-echo "Done: $(wc -l < /home/claude/insutok.html) lines"
