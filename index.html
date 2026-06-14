@@ -466,7 +466,7 @@
       <p class="section-sub">Traditional insurance and social protection laws don't recognise content creators. When income stops due to platform actions or market shifts, there's no safety net.</p>
       <div class="grid2" style="max-width:860px">
         <div class="card"><div class="problem-icon" style="background:#fff3e0">⚡</div><h3>Algorithm Changes</h3><p>Platform algorithms can demonetise or reduce reach overnight, wiping out months of income with zero recourse or compensation from the platform.</p></div>
-        <div class="card"><div class="problem-icon" style="background:#e8f5e9">🔗</div><h3>Brand Deal Loss</h3><p>Sponsorships can end abruptly due to company budget cuts, shifting trends, or contract disputes — leaving creators with no income replacement.</p></div>
+        <div class="card"><div class="problem-icon" style="background:#e8f5e9">🔗</div><h3>Brand Deal Loss</h3><p>Sponsorships can end abruptly due to company budget cuts, shifting trends, or contract disputes leaving creators with no income replacement.</p></div>
         <div class="card"><div class="problem-icon" style="background:#fce4ec">🚫</div><h3>Account Deactivation</h3><p>Platform bans eliminate all income instantly with limited appeals and no compensation, often with no prior warning to the creator.</p></div>
         <div class="card"><div class="problem-icon" style="background:#e3f2fd">📉</div><h3>Audience Decline</h3><p>Viral content fades. Income tied to views and subscriptions can halve in weeks without any wrongdoing on the creator's part.</p></div>
       </div>
@@ -481,10 +481,10 @@
       <p class="section-sub">A digital-first platform that connects your social accounts, monitors income, and streamlines claims.</p>
       <div class="feat-grid">
         <div class="feat-box"><div class="feat-icon">📊</div><h3>Income Dashboard</h3><p>Connect YouTube, TikTok, and Instagram APIs to automatically log daily income, views, and engagement as verifiable claim evidence.</p></div>
-        <div class="feat-box"><div class="feat-icon">🔔</div><h3>Interruption Alerts</h3><p>Automatic detection of account deactivations, demonetisation events, and unusual income drops — your policy activates instantly via SMS and WhatsApp.</p></div>
+        <div class="feat-box"><div class="feat-icon">🔔</div><h3>Interruption Alerts</h3><p>Automatic detection of account deactivations, demonetisation events, and unusual income drops your policy activates instantly via SMS and WhatsApp.</p></div>
         <div class="feat-box"><div class="feat-icon">📋</div><h3>One-Tap Claims</h3><p>File a claim in under 60 seconds. Upload platform logs, attach evidence, and submit supporting documents from your phone.</p></div>
-        <div class="feat-box"><div class="feat-icon">🛡️</div><h3>Fraud Prevention</h3><p>Cross-references your claimed interruption against live platform data. Genuine claims are approved faster — within 48 hours.</p></div>
-        <div class="feat-box"><div class="feat-icon">📚</div><h3>Financial Literacy</h3><p>In-app modules on budgeting, savings strategies, and diversifying income streams — built by our financial educators.</p></div>
+        <div class="feat-box"><div class="feat-icon">🛡️</div><h3>Fraud Prevention</h3><p>Cross-references your claimed interruption against live platform data. Genuine claims are approved faster within 48 hours.</p></div>
+        <div class="feat-box"><div class="feat-icon">📚</div><h3>Financial Literacy</h3><p>In-app modules on budgeting, savings strategies, and diversifying income streams built by our financial educators.</p></div>
         <div class="feat-box"><div class="feat-icon">📈</div><h3>Risk Score Tracking</h3><p>Monitor your risk score over time. Diversifying platforms and growing audiences actively lowers your premium at renewal.</p></div>
       </div>
     </div>
@@ -516,7 +516,7 @@
     <div class="container">
       <div class="section-label">Premium Calculator</div>
       <h2 class="section-title">Know Your Premium<br/>in 60 Seconds</h2>
-      <p class="section-sub">Log in or register to use the premium calculator — your personalised quote is based on your verified creator profile.</p>
+      <p class="section-sub">Log in or register to use the premium calculator your personalised quote is based on your verified creator profile.</p>
       <div style="text-align:center;margin-top:32px">
         <button class="btn btn-primary" style="font-size:15px;padding:14px 28px" onclick="switchTab('claims')">Login / Register to Calculate →</button>
       </div>
@@ -532,12 +532,12 @@
       <div class="math-grid">
         <div class="math-card">
           <h3>📊 Claim Frequency Model</h3>
-          <p>Interruptions per year are modelled using a <strong>Negative Binomial distribution</strong> — better suited than Poisson for count data that exhibits <em>overdispersion</em>, where real-world variance exceeds the mean. Creator income interruptions cluster in bursts (e.g. algorithm updates affecting many creators simultaneously), making the Negative Binomial's extra flexibility essential for accurate pricing.</p>
+          <p>Interruptions per year are modelled using a <strong>Negative Binomial distribution</strong> better suited than Poisson for count data that exhibits <em>overdispersion</em>, where real-world variance exceeds the mean. Creator income interruptions cluster in bursts (e.g. algorithm updates affecting many creators simultaneously), making the Negative Binomial's extra flexibility essential for accurate pricing.</p>
           <p>The model is parameterised by mean <strong>μ</strong> (expected interruptions per year) and dispersion parameter <strong>r</strong>, with variance = μ + μ²/r.</p>
         </div>
-        <div class="math-card"><h3>📈 Claim Severity Model</h3><p>Monetary loss per interruption is modelled using a <strong>Lognormal distribution</strong> — suited to right-skewed income with a zero lower bound. Each claim's financial impact is estimated using your income level, replacement ratio, and expected duration.</p></div>
+        <div class="math-card"><h3>📈 Claim Severity Model</h3><p>Monetary loss per interruption is modelled using a <strong>Lognormal distribution</strong> suited to right-skewed income with a zero lower bound. Each claim's financial impact is estimated using your income level, replacement ratio, and expected duration.</p></div>
         <div class="math-card"><h3>💰 Premium Calculation</h3><p>Final premium combines expected loss with actuarial loadings for admin, profit margin, and adverse selection risk. Example: 2 interruptions/yr × KSh 15,000 severity × 1.20 loading = <strong>KSh 36,000/yr</strong></p></div>
-        <div class="math-card"><h3>🛡️ Risk Score Model</h3><p>Risk is scored across three factors — History of Bans, Content Niche, and Platform Concentration — producing a composite score that determines your premium band. Scores range from 1.00 (highest risk) to 3.00 (lowest risk). High: 1.00–1.60 · Medium: 1.61–2.30 · Low: 2.31–3.00.</p></div>
+        <div class="math-card"><h3>🛡️ Risk Score Model</h3><p>Risk is scored across three factors — History of Bans, Content Niche, and Platform Concentration producing a composite score that determines your premium band. Scores range from 1.00 (highest risk) to 3.00 (lowest risk). High: 1.00–1.60 · Medium: 1.61–2.30 · Low: 2.31–3.00.</p></div>
       </div>
     </div>
   </div>
@@ -606,13 +606,13 @@
       <div class="charts-grid">
         <div class="chart-card">
           <h3>Frequency Risk Distribution</h3>
-          <p>Probability of exactly X interruptions this year — modelled using the <strong>Negative Binomial distribution</strong> to capture the overdispersion observed in real creator interruption data.</p>
+          <p>Probability of exactly X interruptions this year modelled using the <strong>Negative Binomial distribution</strong> to capture the overdispersion observed in real creator interruption data.</p>
           <p style="font-size:11px;color:var(--ink3)">Mean (μ): <span id="nbMuDisplay">2</span> · Dispersion (r): <span id="nbRDisplay">3</span></p>
           <canvas id="poissonChart"></canvas>
         </div>
         <div class="chart-card">
           <h3>Financial Severity Distribution</h3>
-          <p>Distribution curve of potential financial loss per interruption event — notice the long tail showing high-severity risks.</p>
+          <p>Distribution curve of potential financial loss per interruption event notice the long tail showing high-severity risks.</p>
           <p style="font-size:11px;color:var(--ink3)">Base Expected Loss: <span id="severityDisplay">KSh 15,000</span></p>
           <canvas id="lognormalChart"></canvas>
         </div>
@@ -625,17 +625,17 @@
           <div class="card">
             <div style="font-size:32px;margin-bottom:16px">⚡</div>
             <h3>Algorithm Changes</h3>
-            <p>Sudden demonetisation or reach suppression triggered by platform algorithm updates — verified through API income-drop detection against your 90-day baseline.</p>
+            <p>Sudden demonetisation or reach suppression triggered by platform algorithm updates verified through API income-drop detection against your 90-day baseline.</p>
           </div>
           <div class="card">
             <div style="font-size:32px;margin-bottom:16px">🔗</div>
             <h3>Brand Deal Loss</h3>
-            <p>Abrupt cancellation of active sponsorship agreements due to brand budget cuts, force majeure, or unilateral contract termination — supported by deal correspondence evidence.</p>
+            <p>Abrupt cancellation of active sponsorship agreements due to brand budget cuts, force majeure, or unilateral contract termination supported by deal correspondence evidence.</p>
           </div>
           <div class="card">
             <div style="font-size:32px;margin-bottom:16px">🚫</div>
             <h3>Account Deactivation</h3>
-            <p>Full platform ban or account suspension that eliminates monetisation — verified directly against platform status APIs and official platform notifications.</p>
+            <p>Full platform ban or account suspension that eliminates monetisation verified directly against platform status APIs and official platform notifications.</p>
           </div>
           <div class="card">
             <div style="font-size:32px;margin-bottom:16px">📉</div>
@@ -991,7 +991,7 @@
                   <div class="file-list" id="file-list"></div>
                   <div class="upload-note">🔒 Documents are private and only accessible to INSUTOK's claims team.</div>
                 </div>
-                <div class="form-group"><label class="form-label">Description of Interruption *</label><textarea class="form-input" id="cf-desc" style="min-height:100px;resize:vertical" placeholder="Describe what happened — include dates, platforms affected, and any correspondence with the platform or brand..."></textarea></div>
+                <div class="form-group"><label class="form-label">Description of Interruption *</label><textarea class="form-input" id="cf-desc" style="min-height:100px;resize:vertical" placeholder="Describe what happened include dates, platforms affected, and any correspondence with the platform or brand..."></textarea></div>
                 <button class="btn btn-primary" style="width:100%;justify-content:center" onclick="submitClaim()">Submit Claim →</button>
               </div>
             </div>
@@ -1105,7 +1105,7 @@
         <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How is my premium calculated?</div><div class="faq-a">Your premium is based on three risk factors: History of Bans, Content Niche Risk, and Platform Concentration. These are combined into a composite risk score which feeds into our Negative Binomial frequency model and Lognormal severity model to produce a fair, personalised premium.</div></div>
         <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How quickly are claims paid?</div><div class="faq-a">Straightforward claims verified through platform API data are typically approved within 48 hours of submission. Payments are made directly to your M-PESA or bank account. Complex claims may take up to 7 business days.</div></div>
         <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is my personal and platform data safe?</div><div class="faq-a">All data is stored securely and never sold to third parties. The public data scan authorisation covers only publicly visible social media information for risk assessment. Documents you upload in claims are private and only accessible to the claims team.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">When does INSUTOK launch?</div><div class="faq-a">INSUTOK is currently in the research and development phase. Join the waitlist to be notified first when we open for enrolment — early joiners receive a launch discount.</div></div>
+        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">When does INSUTOK launch?</div><div class="faq-a">INSUTOK is currently in the research and development phase. Join the waitlist to be notified first when we open for enrolment early joiners receive a launch discount.</div></div>
       </div>
     </div>
   </div>
